@@ -21,19 +21,19 @@ Some code of this project is based off the Alexander G Dean's Serial-Demo
 * recieve commands sent by GUI
 * send status of commands sent by GUI
 
-## Design
-
-## Clocking Info
-48Mhz
+## Scheduling
+Type: Non premptive
 ### Window
-### General Application structure/ Architecture
-* Event Driven Tasks
-* Periodic Tasks
+#### Event Driven Tasks
 
+#### Periodic Tasks
+
+### General Application structure/ Architecture
 ![System Diagram](https://github.com/MiguelAmaro/baboom_Driver/blob/master/docs/diagram_EmbeddedSystem.png)
-### Data Structures and Flow
 ![Modules and Dependencies Diagram](https://github.com/MiguelAmaro/baboom_Driver/blob/master/docs/diagram_Modules%26Dependencies.png)
-### Components
+
+### Device Info
+Clock Speed: 48Mhz
 
 ## Portability
 Intended to run on any Desktop PC
