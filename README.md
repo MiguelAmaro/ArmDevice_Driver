@@ -25,9 +25,9 @@ Firmware for the pan tilt device of the baboom project using arm processors. The
 * Event Driven Tasks
 * Periodic Tasks
 
-![System Diagram](https://github.com/MiguelAmaro/baboom_Driver/blob/master/diagram_EmbeddedSystem.png)
+![System Diagram](https://github.com/MiguelAmaro/baboom_Driver/blob/master/docs/diagram_EmbeddedSystem.png)
 ### Data Structures and Flow
-![Modules and Dependencies Diagram](https://github.com/MiguelAmaro/baboom_Driver/blob/master/diagram_Modules%26Dependencies.png)
+![Modules and Dependencies Diagram](https://github.com/MiguelAmaro/baboom_Driver/blob/master/docs/diagram_Modules%26Dependencies.png)
 ### Components
 
 ## Portability
