@@ -11568,18 +11568,18 @@ N#ifndef LEDS_H
 N#define LEDS_H
 N
 N// Freedom KL25Z LEDs
-N#define RED_LED_POS (18)		// on port B
+N#define RED_LED_POS   (18)  // on port B
 N#define GREEN_LED_POS (19)	// on port B
-N#define BLUE_LED_POS (1)		// on port D
+N#define BLUE_LED_POS  (1)		// on port D
 N
 N#define MASK(x) (1UL << (x))
 N
 N// function prototypes
 Nvoid Init_RGB_LEDs(void);
-Nvoid Control_RGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on);
+Nvoid controlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on);
 N
 N#endif
-N// *******************************ARM University Program Copyright © ARM Ltd 2013*************************************   
+N
 L 3 "src\onboard_leds.c" 2
 N
 Nvoid Init_RGB_LEDs(void) {
@@ -11608,27 +11608,20 @@ N	PTD->PDDR |= MASK(BLUE_LED_POS)                      ;
 X	((GPIO_Type *)(0x400FF0C0u))->PDDR |= (1UL << ((1)))                      ;
 N}
 N
-Nvoid Control_RGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on) {
-N	if (red_on) {
-N			PTB->PCOR = MASK(  RED_LED_POS);
-X			((GPIO_Type *)(0x400FF040u))->PCOR = (1UL << ((18)));
-N	} else {
-N			PTB->PSOR = MASK(  RED_LED_POS); 
-X			((GPIO_Type *)(0x400FF040u))->PSOR = (1UL << ((18))); 
-N	}
-N	if (green_on) {
-N			PTB->PCOR = MASK(GREEN_LED_POS);
-X			((GPIO_Type *)(0x400FF040u))->PCOR = (1UL << ((19)));
-N	}	else {
-N			PTB->PSOR = MASK(GREEN_LED_POS); 
-X			((GPIO_Type *)(0x400FF040u))->PSOR = (1UL << ((19))); 
-N	} 
-N	if (blue_on) {
-N			PTD->PCOR = MASK( BLUE_LED_POS);
-X			((GPIO_Type *)(0x400FF0C0u))->PCOR = (1UL << ((1)));
-N	}	else {
-N			PTD->PSOR = MASK( BLUE_LED_POS); 
-X			((GPIO_Type *)(0x400FF0C0u))->PSOR = (1UL << ((1))); 
-N	}
+Nvoid controlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on) {
+N	if (  red_on) { PTB->PCOR = MASK(  RED_LED_POS); } 
+X	if (  red_on) { ((GPIO_Type *)(0x400FF040u))->PCOR = (1UL << ((18))); } 
+N	else          { PTB->PSOR = MASK(  RED_LED_POS); }
+X	else          { ((GPIO_Type *)(0x400FF040u))->PSOR = (1UL << ((18))); }
+N	
+N	if (green_on) { PTB->PCOR = MASK(GREEN_LED_POS); }	
+X	if (green_on) { ((GPIO_Type *)(0x400FF040u))->PCOR = (1UL << ((19))); }	
+N	else          { PTB->PSOR = MASK(GREEN_LED_POS); } 
+X	else          { ((GPIO_Type *)(0x400FF040u))->PSOR = (1UL << ((19))); } 
+N	
+N	if ( blue_on) {	PTD->PCOR = MASK( BLUE_LED_POS); }	
+X	if ( blue_on) {	((GPIO_Type *)(0x400FF0C0u))->PCOR = (1UL << ((1))); }	
+N	else          { PTD->PSOR = MASK( BLUE_LED_POS); }
+X	else          { ((GPIO_Type *)(0x400FF0C0u))->PSOR = (1UL << ((1))); }
 N}	
 N

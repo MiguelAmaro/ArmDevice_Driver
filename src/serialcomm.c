@@ -11,6 +11,9 @@ struct __FILE
 FILE __stdout;  //Use with printf
 FILE __stdin;		//use with fget/sscanf, or scanf
 
+//----------------------------------------
+// Supporting Funcitons
+//----------------------------------------
 
 //Retarget the fputc method to use the UART0
 int fputc(int ch, FILE *f){
@@ -147,5 +150,32 @@ uint32_t Rx_Chars_Available(void) {
 
 uint8_t	Get_Rx_Char(void) {
 	return Q_Dequeue(&RxQ);
+}
+
+//-----------------------------------------
+// Tasks
+//-----------------------------------------
+void task_CheckForAndProcessSerialChars(void){
+	if(Q_Size(&RxQ)){ // check if characters have arrived
+		recievedChar = Q_Dequeue(&RxQ);
+		// Blocking transmit
+		sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
+		// Enqueue string
+		bufferPtr = buffer;
+		
+		while (*bufferPtr != '\0') { 
+			// copy characters up to null terminator
+			while (Q_Full(&TxQ)); // wait for space to open up
+			
+			Q_Enqueue(&TxQ, *bufferPtr);
+			bufferPtr++;
+		}
+	}
+}
+
+void task_StartTransmitter(void){
+	if (!(UART0->C2 & UART0_C2_TIE_MASK)) {
+				UART0->C2 |= UART0_C2_TIE(1);
+	}	
 }
 

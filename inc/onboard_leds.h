@@ -10,7 +10,7 @@
 
 // function prototypes
 void Init_RGB_LEDs(void);
-void controlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on);
+void task_ControlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on);
 
 #endif
 

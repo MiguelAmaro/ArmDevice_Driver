@@ -8,7 +8,7 @@ int main (void) {
 	Init_UART0(115200);
 	
  	printf("\n\rPrintF: Starting Program!\n\r");
-	Send_String((uint8_t*)"\n\rSendString: Hello, Maseter!\n\r");
+	Send_String((uint8_t*)"\n\rSendString: Hello, Master!\n\r");
 
 	scheduler();
 }

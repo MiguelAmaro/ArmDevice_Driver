@@ -29042,6 +29042,15 @@ N#define UART_OVERSAMPLE_RATE 	(16)
 N#define BUS_CLOCK 						(24e6)
 N#define SYS_CLOCK							(48e6)
 N
+N//----------------------------
+N// Tasks
+N//----------------------------
+Nvoid task_CheckForAndProcessSerialChars(void);
+Nvoid task_StartTransmitter(void);
+N
+N//----------------------------
+N// Supporting Functions
+N//----------------------------
 Nvoid Init_UART0 (uint32_t baud_rate);
 Nvoid Send_String(uint8_t*       str);
 N
@@ -29049,8 +29058,7 @@ Nuint32_t Rx_Chars_Available(void);
 Nuint8_t	 Get_Rx_Char       (void);
 N
 Nextern Q_T TxQ, RxQ;
-N
-N
+Nstatic uint8_t buffer[80], recievedChar, * bufferPtr;
 N#endif
 N
 L 6 "src\main.c" 2
@@ -29059,7 +29067,7 @@ Nint main (void) {
 N	Init_UART0(115200);
 N	
 N 	printf("\n\rPrintF: Starting Program!\n\r");
-N	Send_String((uint8_t*)"\n\rSendString: Hello, Maseter!\n\r");
+N	Send_String((uint8_t*)"\n\rSendString: Hello, Master!\n\r");
 N
 N	scheduler();
 N}

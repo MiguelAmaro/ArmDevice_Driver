@@ -9,6 +9,15 @@
 #define BUS_CLOCK 						(24e6)
 #define SYS_CLOCK							(48e6)
 
+//----------------------------
+// Tasks
+//----------------------------
+void task_CheckForAndProcessSerialChars(void);
+void task_StartTransmitter(void);
+
+//----------------------------
+// Supporting Functions
+//----------------------------
 void Init_UART0 (uint32_t baud_rate);
 void Send_String(uint8_t*       str);
 
@@ -16,7 +25,6 @@ uint32_t Rx_Chars_Available(void);
 uint8_t	 Get_Rx_Char       (void);
 
 extern Q_T TxQ, RxQ;
-
-
+static uint8_t buffer[80], recievedChar, * bufferPtr;
 #endif
 

@@ -19760,6 +19760,15 @@ N#define UART_OVERSAMPLE_RATE 	(16)
 N#define BUS_CLOCK 						(24e6)
 N#define SYS_CLOCK							(48e6)
 N
+N//----------------------------
+N// Tasks
+N//----------------------------
+Nvoid task_CheckForAndProcessSerialChars(void);
+Nvoid task_StartTransmitter(void);
+N
+N//----------------------------
+N// Supporting Functions
+N//----------------------------
 Nvoid Init_UART0 (uint32_t baud_rate);
 Nvoid Send_String(uint8_t*       str);
 N
@@ -19767,8 +19776,7 @@ Nuint32_t Rx_Chars_Available(void);
 Nuint8_t	 Get_Rx_Char       (void);
 N
 Nextern Q_T TxQ, RxQ;
-N
-N
+Nstatic uint8_t buffer[80], recievedChar, * bufferPtr;
 N#endif
 N
 L 2 "src\serialcomm.c" 2
@@ -20896,6 +20904,9 @@ N
 NFILE __stdout;  //Use with printf
 NFILE __stdin;		//use with fget/sscanf, or scanf
 N
+N//----------------------------------------
+N// Supporting Funcitons
+N//----------------------------------------
 N
 N//Retarget the fputc method to use the UART0
 Nint fputc(int ch, FILE *f){
@@ -21077,5 +21088,34 @@ N}
 N
 Nuint8_t	Get_Rx_Char(void) {
 N	return Q_Dequeue(&RxQ);
+N}
+N
+N//-----------------------------------------
+N// Tasks
+N//-----------------------------------------
+Nvoid task_CheckForAndProcessSerialChars(void){
+N	if(Q_Size(&RxQ)){ // check if characters have arrived
+N		recievedChar = Q_Dequeue(&RxQ);
+N		// Blocking transmit
+N		sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
+N		// Enqueue string
+N		bufferPtr = buffer;
+N		
+N		while (*bufferPtr != '\0') { 
+N			// copy characters up to null terminator
+N			while (Q_Full(&TxQ)); // wait for space to open up
+N			
+N			Q_Enqueue(&TxQ, *bufferPtr);
+N			bufferPtr++;
+N		}
+N	}
+N}
+N
+Nvoid task_StartTransmitter(void){
+N	if (!(UART0->C2 & UART0_C2_TIE_MASK)) {
+X	if (!(((UART0_Type *)(0x4006A000u))->C2 & 0x80u)) {
+N				UART0->C2 |= UART0_C2_TIE(1);
+X				((UART0_Type *)(0x4006A000u))->C2 |= (((uint8_t)(((uint8_t)(1))<<7))&0x80u);
+N	}	
 N}
 N

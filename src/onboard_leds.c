@@ -18,21 +18,14 @@ void Init_RGB_LEDs(void) {
 	PTD->PDDR |= MASK(BLUE_LED_POS)                      ;
 }
 
-void controlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on) {
-	if (red_on) {
-			PTB->PCOR = MASK(  RED_LED_POS);
-	} else {
-			PTB->PSOR = MASK(  RED_LED_POS); 
-	}
-	if (green_on) {
-			PTB->PCOR = MASK(GREEN_LED_POS);
-	}	else {
-			PTB->PSOR = MASK(GREEN_LED_POS); 
-	} 
-	if (blue_on) {
-			PTD->PCOR = MASK( BLUE_LED_POS);
-	}	else {
-			PTD->PSOR = MASK( BLUE_LED_POS); 
-	}
+void task_ControlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on) {
+	if (  red_on) { PTB->PCOR = MASK(  RED_LED_POS); } 
+	else          { PTB->PSOR = MASK(  RED_LED_POS); }
+	
+	if (green_on) { PTB->PCOR = MASK(GREEN_LED_POS); }	
+	else          { PTB->PSOR = MASK(GREEN_LED_POS); } 
+	
+	if ( blue_on) {	PTD->PCOR = MASK( BLUE_LED_POS); }	
+	else          { PTD->PSOR = MASK( BLUE_LED_POS); }
 }	
 
