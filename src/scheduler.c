@@ -7,7 +7,7 @@ void scheduler(void){
 	uint8_t buffer[80], c, * bp;
 	
 	while(1){
-		// Blocking receive
+		// non Blocking receive
 		if(Q_Size(&RxQ)){ // check if characters have arrived
 			c = Q_Dequeue(&RxQ);
 			// Blocking transmit
