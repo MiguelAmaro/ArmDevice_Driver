@@ -1,7 +1,7 @@
 #include <MKL25Z4.h>
 #include "onboard_leds.h"
 
-void Init_RGB_LEDs(void) {
+void Init_OnboardRGB_LEDs(void) {
 	// Enable clock to ports B and D
 	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTD_MASK;;
 	
@@ -16,6 +16,10 @@ void Init_RGB_LEDs(void) {
 	// Set ports to outputs
 	PTB->PDDR |= MASK( RED_LED_POS) | MASK(GREEN_LED_POS);
 	PTD->PDDR |= MASK(BLUE_LED_POS)                      ;
+	
+	// Set pins to low aka LEDs are off on initialization
+	PTB->PSOR |= MASK( RED_LED_POS) | MASK(GREEN_LED_POS);
+	PTD->PSOR |= MASK(BLUE_LED_POS)                      ;
 }
 
 void task_ControlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on) {

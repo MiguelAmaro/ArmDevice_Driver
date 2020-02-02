@@ -12,3 +12,6 @@
 .\objects\scheduler.o: .\inc\queue.h
 .\objects\scheduler.o: C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
 .\objects\scheduler.o: .\inc\onboard_leds.h
+.\objects\scheduler.o: C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
+.\objects\scheduler.o: .\inc\motor.h
+.\objects\scheduler.o: C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h

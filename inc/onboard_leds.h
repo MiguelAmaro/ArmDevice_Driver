@@ -1,5 +1,7 @@
-#ifndef LEDS_H
-#define LEDS_H
+#ifndef ONBOARDLEDS_H
+#define ONBOARDLEDS_H
+
+#include <MKL25Z4.h>
 
 // Freedom KL25Z LEDs
 #define RED_LED_POS   (18)  // on port B
@@ -9,7 +11,7 @@
 #define MASK(x) (1UL << (x))
 
 // function prototypes
-void Init_RGB_LEDs(void);
+void Init_OnboardRGB_LEDs(void);
 void task_ControlRGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on);
 
 #endif

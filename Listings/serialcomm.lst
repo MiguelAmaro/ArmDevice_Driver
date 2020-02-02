@@ -19765,6 +19765,7 @@ N// Tasks
 N//----------------------------
 Nvoid task_CheckForAndProcessSerialChars(void);
 Nvoid task_StartTransmitter(void);
+Nunsigned char* task_readRecievedChar(void);
 N
 N//----------------------------
 N// Supporting Functions
@@ -20894,7 +20895,7 @@ N/* end of stdio.h */
 N
 L 3 "src\serialcomm.c" 2
 N
-NQ_T TxQ, RxQ;
+NQ_T transmitQueue, receiveQueue;
 N
 Nstruct __FILE
 N{
@@ -20955,25 +20956,25 @@ N
 N	// Set baud rate and oversampling ratio
 N	sbr = (uint16_t)((SYS_CLOCK)/(baud_rate * UART_OVERSAMPLE_RATE)); 			
 X	sbr = (uint16_t)(((48e6))/(baud_rate * (16))); 			
-N	UART0->BDH &= ~UART0_BDH_SBR_MASK;
-X	((UART0_Type *)(0x4006A000u))->BDH &= ~0x1Fu;
-N	UART0->BDH |= UART0_BDH_SBR(sbr>>8);
-X	((UART0_Type *)(0x4006A000u))->BDH |= (((uint8_t)(((uint8_t)(sbr>>8))<<0))&0x1Fu);
-N	UART0->BDL = UART0_BDL_SBR(sbr);
-X	((UART0_Type *)(0x4006A000u))->BDL = (((uint8_t)(((uint8_t)(sbr))<<0))&0xFFu);
-N	UART0->C4 |= UART0_C4_OSR(UART_OVERSAMPLE_RATE-1);				
-X	((UART0_Type *)(0x4006A000u))->C4 |= (((uint8_t)(((uint8_t)((16)-1))<<0))&0x1Fu);				
+N	UART0->BDH &= ~UART0_BDH_SBR_MASK   ;
+X	((UART0_Type *)(0x4006A000u))->BDH &= ~0x1Fu   ;
+N	UART0->BDH |=  UART0_BDH_SBR(sbr>>8);
+X	((UART0_Type *)(0x4006A000u))->BDH |=  (((uint8_t)(((uint8_t)(sbr>>8))<<0))&0x1Fu);
+N	UART0->BDL  =  UART0_BDL_SBR(sbr   );
+X	((UART0_Type *)(0x4006A000u))->BDL  =  (((uint8_t)(((uint8_t)(sbr))<<0))&0xFFu);
+N	UART0->C4  |=  UART0_C4_OSR (UART_OVERSAMPLE_RATE-1);				
+X	((UART0_Type *)(0x4006A000u))->C4  |=  (((uint8_t)(((uint8_t)((16)-1))<<0))&0x1Fu);				
 N
 N	// Disable interrupts for RX active edge and LIN break detect, select one stop bit
 N	UART0->BDH |= UART0_BDH_RXEDGIE(0) | UART0_BDH_SBNS(0) | UART0_BDH_LBKDIE(0);
 X	((UART0_Type *)(0x4006A000u))->BDH |= (((uint8_t)(((uint8_t)(0))<<6))&0x40u) | (((uint8_t)(((uint8_t)(0))<<5))&0x20u) | (((uint8_t)(((uint8_t)(0))<<7))&0x80u);
 N	
 N	// Don't enable loopback mode, use 8 data bit mode, don't use parity
-N	UART0->C1 = UART0_C1_LOOPS(0) | UART0_C1_M(0) | UART0_C1_PE(0); 
-X	((UART0_Type *)(0x4006A000u))->C1 = (((uint8_t)(((uint8_t)(0))<<7))&0x80u) | (((uint8_t)(((uint8_t)(0))<<4))&0x10u) | (((uint8_t)(((uint8_t)(0))<<1))&0x2u); 
+N	UART0->C1 = UART0_C1_LOOPS(0) |    UART0_C1_M(0) |   UART0_C1_PE(0); 
+X	((UART0_Type *)(0x4006A000u))->C1 = (((uint8_t)(((uint8_t)(0))<<7))&0x80u) |    (((uint8_t)(((uint8_t)(0))<<4))&0x10u) |   (((uint8_t)(((uint8_t)(0))<<1))&0x2u); 
 N	// Don't invert transmit data, don't enable interrupts for errors
-N	UART0->C3 = UART0_C3_TXINV(0) | UART0_C3_ORIE(0)| UART0_C3_NEIE(0) 
-X	((UART0_Type *)(0x4006A000u))->C3 = (((uint8_t)(((uint8_t)(0))<<4))&0x10u) | (((uint8_t)(((uint8_t)(0))<<3))&0x8u)| (((uint8_t)(((uint8_t)(0))<<2))&0x4u) 
+N	UART0->C3 = UART0_C3_TXINV(0) | UART0_C3_ORIE(0) | UART0_C3_NEIE(0) 
+X	((UART0_Type *)(0x4006A000u))->C3 = (((uint8_t)(((uint8_t)(0))<<4))&0x10u) | (((uint8_t)(((uint8_t)(0))<<3))&0x8u) | (((uint8_t)(((uint8_t)(0))<<2))&0x4u) 
 N			| UART0_C3_FEIE(0) | UART0_C3_PEIE(0);
 X			| (((uint8_t)(((uint8_t)(0))<<1))&0x2u) | (((uint8_t)(((uint8_t)(0))<<0))&0x1u);
 N
@@ -20984,23 +20985,23 @@ N
 N	// Try it a different way
 N	UART0->S1 |= UART0_S1_OR_MASK | UART0_S1_NF_MASK | 
 X	((UART0_Type *)(0x4006A000u))->S1 |= 0x8u | 0x4u | 
-N									UART0_S1_FE_MASK | UART0_S1_PF_MASK;
-X									0x2u | 0x1u;
+N							 UART0_S1_FE_MASK | UART0_S1_PF_MASK;
+X							 0x2u | 0x1u;
 N	
 N	// Send LSB first, do not invert received data
 N	UART0->S2 = UART0_S2_MSBF(0) | UART0_S2_RXINV(0); 
 X	((UART0_Type *)(0x4006A000u))->S2 = (((uint8_t)(((uint8_t)(0))<<5))&0x20u) | (((uint8_t)(((uint8_t)(0))<<4))&0x10u); 
 N	
 N	// Enable interrupts. Listing 8.11 on p. 234
-N	Q_Init(&TxQ);
-N	Q_Init(&RxQ);
+N	Q_Init(&transmitQueue);
+N	Q_Init(&receiveQueue );
 N
-N	NVIC_SetPriority(UART0_IRQn, 2); // 0, 1, 2, or 3
-X	__NVIC_SetPriority(UART0_IRQn, 2); 
-N	NVIC_ClearPendingIRQ(UART0_IRQn); 
-X	__NVIC_ClearPendingIRQ(UART0_IRQn); 
-N	NVIC_EnableIRQ(UART0_IRQn);
-X	__NVIC_EnableIRQ(UART0_IRQn);
+N	NVIC_SetPriority    (UART0_IRQn, 2); // 0, 1, 2, or 3
+X	__NVIC_SetPriority    (UART0_IRQn, 2); 
+N	NVIC_ClearPendingIRQ(UART0_IRQn   ); 
+X	__NVIC_ClearPendingIRQ(UART0_IRQn   ); 
+N	NVIC_EnableIRQ      (UART0_IRQn   );
+X	__NVIC_EnableIRQ      (UART0_IRQn   );
 N
 N	// Enable receive interrupts but not transmit interrupts yet
 N	UART0->C2 |= UART_C2_RIE(1);
@@ -21030,8 +21031,8 @@ X		0x2u | 0x1u)) {
 N			// clear the error flags
 N			UART0->S1 |= UART0_S1_OR_MASK | UART0_S1_NF_MASK | 
 X			((UART0_Type *)(0x4006A000u))->S1 |= 0x8u | 0x4u | 
-N									UART0_S1_FE_MASK | UART0_S1_PF_MASK;	
-X									0x2u | 0x1u;	
+N									 UART0_S1_FE_MASK | UART0_S1_PF_MASK;	
+X									 0x2u | 0x1u;	
 N			// read the data register to clear RDRF
 N			ch = UART0->D;
 X			ch = ((UART0_Type *)(0x4006A000u))->D;
@@ -21041,8 +21042,8 @@ X	if (((UART0_Type *)(0x4006A000u))->S1 & 0x20u) {
 N		// received a character
 N		ch = UART0->D;
 X		ch = ((UART0_Type *)(0x4006A000u))->D;
-N		if (!Q_Full(&RxQ)) {
-N			Q_Enqueue(&RxQ, ch);
+N		if (!Q_Full(&receiveQueue)) {
+N			Q_Enqueue(&receiveQueue, ch);
 N		} else {
 N			// error - queue full.
 N			// discard character
@@ -21053,9 +21054,9 @@ X	if ( (((UART0_Type *)(0x4006A000u))->C2 & 0x80u) &&
 N			(UART0->S1 & UART0_S1_TDRE_MASK) ) { // tx buffer empty
 X			(((UART0_Type *)(0x4006A000u))->S1 & 0x80u) ) { 
 N		// can send another character
-N		if (!Q_Empty(&TxQ)) {
-N			UART0->D = Q_Dequeue(&TxQ);
-X			((UART0_Type *)(0x4006A000u))->D = Q_Dequeue(&TxQ);
+N		if (!Q_Empty(&transmitQueue)) {
+N			UART0->D = Q_Dequeue(&transmitQueue);
+X			((UART0_Type *)(0x4006A000u))->D = Q_Dequeue(&transmitQueue);
 N		} else {
 N			// queue is empty so disable transmitter interrupt
 N			UART0->C2 &= ~UART0_C2_TIE_MASK;
@@ -21067,48 +21068,54 @@ N
 Nvoid Send_String(uint8_t * str) {
 N	// enqueue string
 N	while (*str != '\0') { // copy characters up to null terminator
-N		while (Q_Full(&TxQ))
+N		while (Q_Full(&transmitQueue))
 N			; // wait for space to open up
-N		Q_Enqueue(&TxQ, *str);
+N		Q_Enqueue(&transmitQueue, *str);
 N		str++;
 N	}
 N	// start transmitter if it isn't already running
 N	if (!(UART0->C2 & UART0_C2_TIE_MASK)) {
 X	if (!(((UART0_Type *)(0x4006A000u))->C2 & 0x80u)) {
-N		UART0->D = Q_Dequeue(&TxQ); 
-X		((UART0_Type *)(0x4006A000u))->D = Q_Dequeue(&TxQ); 
+N		UART0->D = Q_Dequeue(&transmitQueue); 
+X		((UART0_Type *)(0x4006A000u))->D = Q_Dequeue(&transmitQueue); 
 N		UART0->C2 |= UART0_C2_TIE(1);
 X		((UART0_Type *)(0x4006A000u))->C2 |= (((uint8_t)(((uint8_t)(1))<<7))&0x80u);
 N	}
 N}
 N
 Nuint32_t Rx_Chars_Available(void) {
-N	return Q_Size(&RxQ);
+N	return Q_Size(&receiveQueue);
 N}
 N
 Nuint8_t	Get_Rx_Char(void) {
-N	return Q_Dequeue(&RxQ);
+N	return Q_Dequeue(&receiveQueue);
 N}
 N
 N//-----------------------------------------
 N// Tasks
 N//-----------------------------------------
 Nvoid task_CheckForAndProcessSerialChars(void){
-N	if(Q_Size(&RxQ)){ // check if characters have arrived
-N		recievedChar = Q_Dequeue(&RxQ);
+N	if(Q_Size(&receiveQueue)){ // check if characters have arrived
+N		recievedChar = Q_Dequeue(&receiveQueue);
 N		// Blocking transmit
-N		sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
-N		// Enqueue string
-N		bufferPtr = buffer;
-N		
+N		//sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
+N		// Enqueue string 
+N		//bufferPtr = buffer;
+N		/*
 N		while (*bufferPtr != '\0') { 
 N			// copy characters up to null terminator
-N			while (Q_Full(&TxQ)); // wait for space to open up
-N			
-N			Q_Enqueue(&TxQ, *bufferPtr);
+N			while (Q_Full(&transmitQueue)); // wait for space to open up
+N			printf("loop");
+N			Q_Enqueue(&transmitQueue, *bufferPtr);
 N			bufferPtr++;
 N		}
+N		*/
 N	}
+N}
+N
+Nunsigned char* task_readRecievedChar(void){
+N	unsigned char* recCharPtr = &recievedChar;
+N	return recCharPtr;
 N}
 N
 Nvoid task_StartTransmitter(void){

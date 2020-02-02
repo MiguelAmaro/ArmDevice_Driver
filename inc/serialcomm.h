@@ -14,6 +14,7 @@
 //----------------------------
 void task_CheckForAndProcessSerialChars(void);
 void task_StartTransmitter(void);
+unsigned char* task_readRecievedChar(void);
 
 //----------------------------
 // Supporting Functions

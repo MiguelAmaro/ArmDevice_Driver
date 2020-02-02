@@ -1,7 +1,7 @@
 #include "serialcomm.h"
 #include <stdio.h>
 
-Q_T TxQ, RxQ;
+Q_T transmitQueue, receiveQueue;
 
 struct __FILE
 {
@@ -50,18 +50,18 @@ void Init_UART0(uint32_t baud_rate) {
 	
 	// Set baud rate and oversampling ratio
 	sbr = (uint16_t)((SYS_CLOCK)/(baud_rate * UART_OVERSAMPLE_RATE)); 			
-	UART0->BDH &= ~UART0_BDH_SBR_MASK;
-	UART0->BDH |= UART0_BDH_SBR(sbr>>8);
-	UART0->BDL = UART0_BDL_SBR(sbr);
-	UART0->C4 |= UART0_C4_OSR(UART_OVERSAMPLE_RATE-1);				
+	UART0->BDH &= ~UART0_BDH_SBR_MASK   ;
+	UART0->BDH |=  UART0_BDH_SBR(sbr>>8);
+	UART0->BDL  =  UART0_BDL_SBR(sbr   );
+	UART0->C4  |=  UART0_C4_OSR (UART_OVERSAMPLE_RATE-1);				
 
 	// Disable interrupts for RX active edge and LIN break detect, select one stop bit
 	UART0->BDH |= UART0_BDH_RXEDGIE(0) | UART0_BDH_SBNS(0) | UART0_BDH_LBKDIE(0);
 	
 	// Don't enable loopback mode, use 8 data bit mode, don't use parity
-	UART0->C1 = UART0_C1_LOOPS(0) | UART0_C1_M(0) | UART0_C1_PE(0); 
+	UART0->C1 = UART0_C1_LOOPS(0) |    UART0_C1_M(0) |   UART0_C1_PE(0); 
 	// Don't invert transmit data, don't enable interrupts for errors
-	UART0->C3 = UART0_C3_TXINV(0) | UART0_C3_ORIE(0)| UART0_C3_NEIE(0) 
+	UART0->C3 = UART0_C3_TXINV(0) | UART0_C3_ORIE(0) | UART0_C3_NEIE(0) 
 			| UART0_C3_FEIE(0) | UART0_C3_PEIE(0);
 
 	// Clear error flags
@@ -69,18 +69,18 @@ void Init_UART0(uint32_t baud_rate) {
 
 	// Try it a different way
 	UART0->S1 |= UART0_S1_OR_MASK | UART0_S1_NF_MASK | 
-									UART0_S1_FE_MASK | UART0_S1_PF_MASK;
+							 UART0_S1_FE_MASK | UART0_S1_PF_MASK;
 	
 	// Send LSB first, do not invert received data
 	UART0->S2 = UART0_S2_MSBF(0) | UART0_S2_RXINV(0); 
 	
 	// Enable interrupts. Listing 8.11 on p. 234
-	Q_Init(&TxQ);
-	Q_Init(&RxQ);
+	Q_Init(&transmitQueue);
+	Q_Init(&receiveQueue );
 
-	NVIC_SetPriority(UART0_IRQn, 2); // 0, 1, 2, or 3
-	NVIC_ClearPendingIRQ(UART0_IRQn); 
-	NVIC_EnableIRQ(UART0_IRQn);
+	NVIC_SetPriority    (UART0_IRQn, 2); // 0, 1, 2, or 3
+	NVIC_ClearPendingIRQ(UART0_IRQn   ); 
+	NVIC_EnableIRQ      (UART0_IRQn   );
 
 	// Enable receive interrupts but not transmit interrupts yet
 	UART0->C2 |= UART_C2_RIE(1);
@@ -103,15 +103,15 @@ void UART0_IRQHandler(void) {
 		UART_S1_FE_MASK | UART_S1_PF_MASK)) {
 			// clear the error flags
 			UART0->S1 |= UART0_S1_OR_MASK | UART0_S1_NF_MASK | 
-									UART0_S1_FE_MASK | UART0_S1_PF_MASK;	
+									 UART0_S1_FE_MASK | UART0_S1_PF_MASK;	
 			// read the data register to clear RDRF
 			ch = UART0->D;
 	}
 	if (UART0->S1 & UART0_S1_RDRF_MASK) {
 		// received a character
 		ch = UART0->D;
-		if (!Q_Full(&RxQ)) {
-			Q_Enqueue(&RxQ, ch);
+		if (!Q_Full(&receiveQueue)) {
+			Q_Enqueue(&receiveQueue, ch);
 		} else {
 			// error - queue full.
 			// discard character
@@ -120,8 +120,8 @@ void UART0_IRQHandler(void) {
 	if ( (UART0->C2 & UART0_C2_TIE_MASK) && // transmitter interrupt enabled
 			(UART0->S1 & UART0_S1_TDRE_MASK) ) { // tx buffer empty
 		// can send another character
-		if (!Q_Empty(&TxQ)) {
-			UART0->D = Q_Dequeue(&TxQ);
+		if (!Q_Empty(&transmitQueue)) {
+			UART0->D = Q_Dequeue(&transmitQueue);
 		} else {
 			// queue is empty so disable transmitter interrupt
 			UART0->C2 &= ~UART0_C2_TIE_MASK;
@@ -132,45 +132,51 @@ void UART0_IRQHandler(void) {
 void Send_String(uint8_t * str) {
 	// enqueue string
 	while (*str != '\0') { // copy characters up to null terminator
-		while (Q_Full(&TxQ))
+		while (Q_Full(&transmitQueue))
 			; // wait for space to open up
-		Q_Enqueue(&TxQ, *str);
+		Q_Enqueue(&transmitQueue, *str);
 		str++;
 	}
 	// start transmitter if it isn't already running
 	if (!(UART0->C2 & UART0_C2_TIE_MASK)) {
-		UART0->D = Q_Dequeue(&TxQ); 
+		UART0->D = Q_Dequeue(&transmitQueue); 
 		UART0->C2 |= UART0_C2_TIE(1);
 	}
 }
 
 uint32_t Rx_Chars_Available(void) {
-	return Q_Size(&RxQ);
+	return Q_Size(&receiveQueue);
 }
 
 uint8_t	Get_Rx_Char(void) {
-	return Q_Dequeue(&RxQ);
+	return Q_Dequeue(&receiveQueue);
 }
 
 //-----------------------------------------
 // Tasks
 //-----------------------------------------
 void task_CheckForAndProcessSerialChars(void){
-	if(Q_Size(&RxQ)){ // check if characters have arrived
-		recievedChar = Q_Dequeue(&RxQ);
+	if(Q_Size(&receiveQueue)){ // check if characters have arrived
+		recievedChar = Q_Dequeue(&receiveQueue);
 		// Blocking transmit
-		sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
-		// Enqueue string
-		bufferPtr = buffer;
-		
+		//sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
+		// Enqueue string 
+		//bufferPtr = buffer;
+		/*
 		while (*bufferPtr != '\0') { 
 			// copy characters up to null terminator
-			while (Q_Full(&TxQ)); // wait for space to open up
-			
-			Q_Enqueue(&TxQ, *bufferPtr);
+			while (Q_Full(&transmitQueue)); // wait for space to open up
+			printf("loop");
+			Q_Enqueue(&transmitQueue, *bufferPtr);
 			bufferPtr++;
 		}
+		*/
 	}
+}
+
+unsigned char* task_readRecievedChar(void){
+	unsigned char* recCharPtr = &recievedChar;
+	return recCharPtr;
 }
 
 void task_StartTransmitter(void){

@@ -407,6 +407,11 @@
               <FileType>1</FileType>
               <FilePath>.\src\scheduler.c</FilePath>
             </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\motor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -431,6 +436,11 @@
               <FileName>scheduler.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\inc\scheduler.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\motor.h</FilePath>
             </File>
           </Files>
         </Group>
