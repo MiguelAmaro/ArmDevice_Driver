@@ -5,7 +5,7 @@ N#ifndef _MOTOR_H_
 N#define _MOTOR_H_
 N
 N#include "MKL25Z4.h" // Device header
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -449,7 +449,7 @@ N
 N#endif /* __stdint_h */
 N
 N/* end of stdint.h */
-L 112 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 112 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N
 N/** Memory map major version (memory maps with equal major version number are
 N * compatible) */
@@ -537,7 +537,7 @@ N#define __NVIC_PRIO_BITS               2         /**< Number of priority bits i
 N#define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
 N
 N#include "core_cm0plus.h"              /* Core Peripheral Access Layer */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 1
 N/**************************************************************************//**
 N * @file     core_cm0plus.h
 N * @brief    CMSIS Cortex-M0+ Core Peripheral Access Layer Header File
@@ -603,7 +603,7 @@ N  @{
 N */
 N
 N#include "cmsis_version.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_version.h
 N * @brief    CMSIS Core(M) Version definitions
@@ -646,7 +646,7 @@ N#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) | \
 N                                   __CM_CMSIS_VERSION_SUB           )       /*!< CMSIS Core(M) version number */
 X#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) |                                    __CM_CMSIS_VERSION_SUB           )        
 N#endif
-L 64 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 64 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N 
 N/*  CMSIS CM0+ definitions */
 N#define __CM0PLUS_CMSIS_VERSION_MAIN (__CM_CMSIS_VERSION_MAIN)                  /*!< \deprecated [31:16] CMSIS HAL main version */
@@ -702,7 +702,7 @@ S
 N#endif
 N
 N#include "cmsis_compiler.h"               /* CMSIS compiler specific defines */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_compiler.h
 N * @brief    CMSIS compiler generic header file
@@ -738,7 +738,7 @@ N */
 N#if   defined ( __CC_ARM )
 X#if   1L
 N  #include "cmsis_armcc.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_armcc.h
 N * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
@@ -1682,7 +1682,7 @@ N/*@} end of group CMSIS_SIMD_intrinsics */
 N
 N
 N#endif /* __CMSIS_ARMCC_H */
-L 35 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 2
+L 35 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 2
 N
 N
 N/*
@@ -1932,7 +1932,7 @@ N
 N
 N#endif /* __CMSIS_COMPILER_H */
 N
-L 116 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 116 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N
 N
 N#ifdef __cplusplus
@@ -2980,7 +2980,7 @@ N
 N#endif /* __CORE_CM0PLUS_H_DEPENDANT */
 N
 N#endif /* __CMSIS_GENERIC */
-L 199 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 199 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N#include "system_MKL25Z4.h"            /* Device specific configuration file */
 L 1 ".\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h" 1
 N/*
@@ -3324,7 +3324,7 @@ S}
 N#endif
 N
 N#endif  /* #if !defined(SYSTEM_MKL25Z4_H_) */
-L 200 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 200 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N
 N/*!
 N * @}
@@ -11592,20 +11592,20 @@ N
 Nstatic void startTPM0Counter(uint16_t, uint32_t);
 Nstatic void stopTPM0Counter (void);
 N
-N// Public 
-Nvoid Init_PortB(                                  void);
-Nvoid Init_TPM0 (                    uint16_t, uint32_t);
-Nvoid task_pulse(          uint32_t, uint16_t, uint32_t);
-Nvoid task_changeDirection(uint32_t, uint16_t, uint32_t);
-Nvoid scanAndProcessMotorCommands(unsigned char recievedChar);
-Nvoid motorComponentStatusCheck(void);
+N// Public  
+Nvoid Init_PortB(                                    void);
+Nvoid Init_TPM0 (                      uint16_t, uint32_t);
+Nvoid task_pulseStepperMotor(uint32_t, uint16_t, uint32_t);
+Nvoid task_changeDirection  (uint32_t, uint16_t, uint32_t);
+Nvoid task_scanForAndProcessIfMotorCommands(unsigned char recievedChar);
+Nvoid task_motorComponentStatusCheck(void);
 Nstatic uint8_t g_PulseCmd = 0;
 N
 N#endif
 N
 L 2 "src\motor.c" 2
 N#include "MKL25Z4.h"                    // Device header
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -19792,8 +19792,8 @@ N	return;
 N}
 N
 Nvoid startTPM0Counter(uint16_t modulo, uint32_t prescaler){
-N	TPM0->MOD = modulo-1; //Modulo set 1500 for a 32 microsecond timer ( 48mHz/1500 = .032MHz)
-X	((TPM_Type *)(0x40038000u))->MOD = modulo-1; 
+N	TPM0->MOD =  modulo-1; //Modulo set 1500 for a 32 microsecond timer ( 48mHz/1500 = .032MHz)
+X	((TPM_Type *)(0x40038000u))->MOD =  modulo-1; 
 N	TPM0->SC |= prescaler; //Set the Prescaler
 X	((TPM_Type *)(0x40038000u))->SC |= prescaler; 
 N	
@@ -19836,7 +19836,7 @@ N
 N	return;
 N}
 N
-Nvoid task_pulse(uint32_t motorPin, uint16_t modulo, uint32_t prescaler) {
+Nvoid task_pulseStepperMotor(uint32_t motorPin, uint16_t modulo, uint32_t prescaler) {
 N	GPIOB->PSOR |= motorPin;
 X	((GPIO_Type *)(0x400FF040u))->PSOR |= motorPin;
 N	startTPM0Counter(modulo, prescaler);
@@ -19884,7 +19884,7 @@ N
 N	return;
 N}
 N
-Nvoid motorComponentStatusCheck(void){
+Nvoid task_motorComponentStatusCheck(void){
 N	//Check Pin Volage
 N	GPIOB->PSOR |= PAN_PTB_PIN00_PUL;
 X	((GPIO_Type *)(0x400FF040u))->PSOR |= (0x001);
@@ -19904,40 +19904,46 @@ N			TPM0->SC |= 0x80;
 X			((TPM_Type *)(0x40038000u))->SC |= 0x80;
 N	}
 N	
-N	
 N	return;
 N}
 N
-Nvoid scanAndProcessMotorCommands(unsigned char recievedChar){
-N			//Check for motor commands
-N		
+Nvoid task_scanForAndProcessIfMotorCommands(unsigned char recievedChar){
+N		//Check for motor commands
+N	
+N		// Pan Processing
 N		if     (recievedChar == PAN_LEFT ){
 X		if     (recievedChar == ('A') ){
 N			motorState &= ~PAN_DIRECTION_REVERSED;
 X			motorState &= ~0x01;
-N			task_pulse(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
-X			task_pulse((0x001), 0x002F, 0x00 );
+N			task_pulseStepperMotor(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
+X			task_pulseStepperMotor((0x001), 0x002F, 0x00 );
 N		}
-N		if     (recievedChar == PAN_RIGHT){
-X		if     (recievedChar == ('B')){
-N			if(!(motorState & PAN_DIRECTION_REVERSED)){
-X			if(!(motorState & 0x01)){
+N		
+N		if(recievedChar == PAN_RIGHT)
+X		if(recievedChar == ('B'))
+N		{
+N			if( !(motorState & PAN_DIRECTION_REVERSED))
+X			if( !(motorState & 0x01))
+N			{
 N				task_changeDirection(PAN_PTB_PIN01_DIR, 0x002F, 0x00 );
 X				task_changeDirection((0x002), 0x002F, 0x00 );
 N				motorState |= PAN_DIRECTION_REVERSED;
 X				motorState |= 0x01;
 N			}
-N			task_pulse          (PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
-X			task_pulse          ((0x001), 0x002F, 0x00 );
+N			
+N			task_pulseStepperMotor(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
+X			task_pulseStepperMotor((0x001), 0x002F, 0x00 );
 N		}
+N		
+N		// Tilt Processing
 N		else if(recievedChar == TILT_UP  ){
 X		else if(recievedChar == ('C')  ){
-N			task_pulse(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
-X			task_pulse((0x004), 0x002F, 0x00);
+N			task_pulseStepperMotor(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
+X			task_pulseStepperMotor((0x004), 0x002F, 0x00);
 N		} 
 N		else if(recievedChar == TILT_DOWN){
 X		else if(recievedChar == ('D')){
-N			task_pulse(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
-X			task_pulse((0x004), 0x002F, 0x00);
+N			task_pulseStepperMotor(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
+X			task_pulseStepperMotor((0x004), 0x002F, 0x00);
 N		}
 N}

@@ -27,13 +27,13 @@ static uint8_t motorState = 0x00;
 static void startTPM0Counter(uint16_t, uint32_t);
 static void stopTPM0Counter (void);
 
-// Public 
-void Init_PortB(                                  void);
-void Init_TPM0 (                    uint16_t, uint32_t);
-void task_pulse(          uint32_t, uint16_t, uint32_t);
-void task_changeDirection(uint32_t, uint16_t, uint32_t);
-void scanAndProcessMotorCommands(unsigned char recievedChar);
-void motorComponentStatusCheck(void);
+// Public  
+void Init_PortB(                                    void);
+void Init_TPM0 (                      uint16_t, uint32_t);
+void task_pulseStepperMotor(uint32_t, uint16_t, uint32_t);
+void task_changeDirection  (uint32_t, uint16_t, uint32_t);
+void task_scanForAndProcessIfMotorCommands(unsigned char recievedChar);
+void task_motorComponentStatusCheck(void);
 static uint8_t g_PulseCmd = 0;
 
 #endif

@@ -1,0 +1,89 @@
+L 1 "src\ecompassSensor_Temp.c"
+N
+N#define INCLUDE (0)
+N
+N
+N#if INCLUDE == (1)
+X#if (0) == (1)
+S
+S#include "Adafruit_Sensor.h"
+S
+S/**************************************************************************/
+S/*!
+S    @brief  Prints sensor information to serial console
+S*/
+S/**************************************************************************/
+Svoid Adafruit_Sensor::printSensorDetails(void) {
+S  sensor_t sensor;
+S  getSensor(&sensor);
+S  Serial.println(F("------------------------------------"));
+S  Serial.print(F("Sensor:       "));
+S  Serial.println(sensor.name);
+S  Serial.print(F("Type:         "));
+S  switch ((sensors_type_t)sensor.type) {
+S  case SENSOR_TYPE_ACCELEROMETER:
+S    Serial.print(F("Acceleration (m/s2)"));
+S    break;
+S  case SENSOR_TYPE_MAGNETIC_FIELD:
+S    Serial.print(F("Magnetic (uT)"));
+S    break;
+S  case SENSOR_TYPE_ORIENTATION:
+S    Serial.print(F("Orientation (degrees)"));
+S    break;
+S  case SENSOR_TYPE_GYROSCOPE:
+S    Serial.print(F("Gyroscopic (rad/s)"));
+S    break;
+S  case SENSOR_TYPE_LIGHT:
+S    Serial.print(F("Light (lux)"));
+S    break;
+S  case SENSOR_TYPE_PRESSURE:
+S    Serial.print(F("Pressure (hPa)"));
+S    break;
+S  case SENSOR_TYPE_PROXIMITY:
+S    Serial.print(F("Distance (cm)"));
+S    break;
+S  case SENSOR_TYPE_GRAVITY:
+S    Serial.print(F("Gravity (m/s2)"));
+S    break;
+S  case SENSOR_TYPE_LINEAR_ACCELERATION:
+S    Serial.print(F("Linear Acceleration (m/s2)"));
+S    break;
+S  case SENSOR_TYPE_ROTATION_VECTOR:
+S    Serial.print(F("Rotation vector"));
+S    break;
+S  case SENSOR_TYPE_RELATIVE_HUMIDITY:
+S    Serial.print(F("Relative Humidity (%)"));
+S    break;
+S  case SENSOR_TYPE_AMBIENT_TEMPERATURE:
+S    Serial.print(F("Ambient Temp (C)"));
+S    break;
+S  case SENSOR_TYPE_OBJECT_TEMPERATURE:
+S    Serial.print(F("Object Temp (C)"));
+S    break;
+S  case SENSOR_TYPE_VOLTAGE:
+S    Serial.print(F("Voltage (V)"));
+S    break;
+S  case SENSOR_TYPE_CURRENT:
+S    Serial.print(F("Current (mA)"));
+S    break;
+S  case SENSOR_TYPE_COLOR:
+S    Serial.print(F("Color (RGBA)"));
+S    break;
+S  }
+S
+S  Serial.println();
+S  Serial.print(F("Driver Ver:   "));
+S  Serial.println(sensor.version);
+S  Serial.print(F("Unique ID:    "));
+S  Serial.println(sensor.sensor_id);
+S  Serial.print(F("Min Value:    "));
+S  Serial.println(sensor.min_value);
+S  Serial.print(F("Max Value:    "));
+S  Serial.println(sensor.max_value);
+S  Serial.print(F("Resolution:   "));
+S  Serial.println(sensor.resolution);
+S  Serial.println(F("------------------------------------\n"));
+S}
+S
+N#endif
+N

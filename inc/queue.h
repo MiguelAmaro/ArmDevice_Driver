@@ -4,21 +4,21 @@
 #include <stdint.h>
 #include <MKL25Z4.h>
 
-#define Q_MAX_SIZE (256)
+#define MAX_QUEUE_SIZE (256)
 
 typedef struct {
   unsigned int Head; // Index of oldest data element 
   unsigned int Tail; // Index of next free space
   unsigned int Size; // Number of elements in use
-  uint8_t Data[Q_MAX_SIZE];
-} volatile Q_T;
+  uint8_t Data[MAX_QUEUE_SIZE];
+} volatile queue_t;
 
-extern void Q_Init (Q_T* q);
-extern int  Q_Empty(Q_T* q);
-extern int  Q_Full (Q_T* q);
-extern int  Q_Size (Q_T* q);
-extern int     Q_Enqueue(Q_T* q, uint8_t d);
-extern uint8_t Q_Dequeue(Q_T* q           );
+extern void Init_Queue  (queue_t*);
+extern int  isQueueEmpty(queue_t*);
+extern int  isQueueFull (queue_t*);
+extern int  queueSize   (queue_t*);
+extern int     enqueueChar(queue_t*, uint8_t);
+extern uint8_t dequeueChar(queue_t*         );
 
 
 #endif // QUEUE_H

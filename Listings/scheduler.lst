@@ -4,8 +4,13 @@ L 1 ".\inc\scheduler.h" 1
 N#ifndef SCHEDULER_H
 N#define SCHEDULER_H
 N
-Nvoid Init_Systick(void);
+Nvoid Init_SysTick(void);
 Nvoid scheduler(void);
+N
+N// Idea...
+N// Declare a data strucuture containing function pointers
+N// and command characters to each module's task which can be passed to a 
+N// function of "serialcomm" 
 N
 N#endif
 L 2 "src\scheduler.c" 2
@@ -1460,7 +1465,7 @@ N
 N/* end of stdint.h */
 L 5 ".\inc\serialcomm.h" 2
 N#include <MKL25Z4.h>
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -1661,7 +1666,7 @@ N#define __NVIC_PRIO_BITS               2         /**< Number of priority bits i
 N#define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
 N
 N#include "core_cm0plus.h"              /* Core Peripheral Access Layer */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 1
 N/**************************************************************************//**
 N * @file     core_cm0plus.h
 N * @brief    CMSIS Cortex-M0+ Core Peripheral Access Layer Header File
@@ -1727,7 +1732,7 @@ N  @{
 N */
 N
 N#include "cmsis_version.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_version.h
 N * @brief    CMSIS Core(M) Version definitions
@@ -1770,7 +1775,7 @@ N#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) | \
 N                                   __CM_CMSIS_VERSION_SUB           )       /*!< CMSIS Core(M) version number */
 X#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) |                                    __CM_CMSIS_VERSION_SUB           )        
 N#endif
-L 64 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 64 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N 
 N/*  CMSIS CM0+ definitions */
 N#define __CM0PLUS_CMSIS_VERSION_MAIN (__CM_CMSIS_VERSION_MAIN)                  /*!< \deprecated [31:16] CMSIS HAL main version */
@@ -1826,7 +1831,7 @@ S
 N#endif
 N
 N#include "cmsis_compiler.h"               /* CMSIS compiler specific defines */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_compiler.h
 N * @brief    CMSIS compiler generic header file
@@ -1862,7 +1867,7 @@ N */
 N#if   defined ( __CC_ARM )
 X#if   1L
 N  #include "cmsis_armcc.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_armcc.h
 N * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
@@ -2806,7 +2811,7 @@ N/*@} end of group CMSIS_SIMD_intrinsics */
 N
 N
 N#endif /* __CMSIS_ARMCC_H */
-L 35 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 2
+L 35 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 2
 N
 N
 N/*
@@ -3056,7 +3061,7 @@ N
 N
 N#endif /* __CMSIS_COMPILER_H */
 N
-L 116 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 116 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N
 N
 N#ifdef __cplusplus
@@ -4104,7 +4109,7 @@ N
 N#endif /* __CORE_CM0PLUS_H_DEPENDANT */
 N
 N#endif /* __CMSIS_GENERIC */
-L 199 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 199 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N#include "system_MKL25Z4.h"            /* Device specific configuration file */
 L 1 ".\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h" 1
 N/*
@@ -4448,7 +4453,7 @@ S}
 N#endif
 N
 N#endif  /* #if !defined(SYSTEM_MKL25Z4_H_) */
-L 200 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 200 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N
 N/*!
 N * @}
@@ -12698,7 +12703,7 @@ N#define QUEUE_H
 N
 N#include <stdint.h>
 N#include <MKL25Z4.h>
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -20857,22 +20862,22 @@ N
 N/* MKL25Z4.h, eof. */
 L 6 ".\inc\queue.h" 2
 N
-N#define Q_MAX_SIZE (256)
+N#define MAX_QUEUE_SIZE (256)
 N
 Ntypedef struct {
 N  unsigned int Head; // Index of oldest data element 
 N  unsigned int Tail; // Index of next free space
 N  unsigned int Size; // Number of elements in use
-N  uint8_t Data[Q_MAX_SIZE];
+N  uint8_t Data[MAX_QUEUE_SIZE];
 X  uint8_t Data[(256)];
-N} volatile Q_T;
+N} volatile queue_t;
 N
-Nextern void Q_Init (Q_T* q);
-Nextern int  Q_Empty(Q_T* q);
-Nextern int  Q_Full (Q_T* q);
-Nextern int  Q_Size (Q_T* q);
-Nextern int     Q_Enqueue(Q_T* q, uint8_t d);
-Nextern uint8_t Q_Dequeue(Q_T* q           );
+Nextern void Init_Queue  (queue_t*);
+Nextern int  isQueueEmpty(queue_t*);
+Nextern int  isQueueFull (queue_t*);
+Nextern int  queueSize   (queue_t*);
+Nextern int     enqueueChar(queue_t*, uint8_t);
+Nextern uint8_t dequeueChar(queue_t*         );
 N
 N
 N#endif // QUEUE_H
@@ -20899,7 +20904,8 @@ N
 Nuint32_t Rx_Chars_Available(void);
 Nuint8_t	 Get_Rx_Char       (void);
 N
-Nextern Q_T TxQ, RxQ;
+N// For Serial: Tx = transmit & Rx = recieve
+Nextern queue_t transmitQ, recieveQ;
 Nstatic uint8_t buffer[80], recievedChar, * bufferPtr;
 N#endif
 N
@@ -20910,7 +20916,7 @@ N#ifndef ONBOARDLEDS_H
 N#define ONBOARDLEDS_H
 N
 N#include <MKL25Z4.h>
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -29089,7 +29095,7 @@ N#ifndef _MOTOR_H_
 N#define _MOTOR_H_
 N
 N#include "MKL25Z4.h" // Device header
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -37272,27 +37278,27 @@ N
 Nstatic void startTPM0Counter(uint16_t, uint32_t);
 Nstatic void stopTPM0Counter (void);
 N
-N// Public 
-Nvoid Init_PortB(                                  void);
-Nvoid Init_TPM0 (                    uint16_t, uint32_t);
-Nvoid task_pulse(          uint32_t, uint16_t, uint32_t);
-Nvoid task_changeDirection(uint32_t, uint16_t, uint32_t);
-Nvoid scanAndProcessMotorCommands(unsigned char recievedChar);
-Nvoid motorComponentStatusCheck(void);
+N// Public  
+Nvoid Init_PortB(                                    void);
+Nvoid Init_TPM0 (                      uint16_t, uint32_t);
+Nvoid task_pulseStepperMotor(uint32_t, uint16_t, uint32_t);
+Nvoid task_changeDirection  (uint32_t, uint16_t, uint32_t);
+Nvoid task_scanForAndProcessIfMotorCommands(unsigned char recievedChar);
+Nvoid task_motorComponentStatusCheck(void);
 Nstatic uint8_t g_PulseCmd = 0;
 N
 N#endif
 N
 L 6 "src\scheduler.c" 2
 N
-N//Non premptive schedualer
+N//Non premptive scheduler
 Nvoid scheduler(void){
 N	while(1){
 N		// Checks for characters and displays
 N		task_CheckForAndProcessSerialChars();
 N		// Start transmitter if it isn't already running
 N
-N		scanAndProcessMotorCommands(*(task_readRecievedChar()));
+N		task_scanForAndProcessIfMotorCommands(*(task_readRecievedChar()));
 N		
 N		
 N		//Check for rgb LED commands
@@ -37309,25 +37315,24 @@ N		else if(*(task_readRecievedChar()) == 'o'){
 N			task_ControlRGB_LEDs(0, 0, 0);
 N		}
 N		
-N		if(SysTick->CTRL & 0x10000){
-X		if(((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->CTRL & 0x10000){
-W "src\scheduler.c" 32 11 argument of type "unsigned char *" is incompatible with parameter of type "const char *restrict"
-N			printf(task_readRecievedChar());
-N		}
-N		
 N		task_StartTransmitter();
 N	} // End of Scheduler Loop
 N}
 N//----------------------------
-N// Schedualing Components
+N// Scheduling Components
 N//----------------------------
-Nvoid Systic_Handler(void){
-N
+Nvoid SysTick_Handler(void){
+W "src\scheduler.c" 38 9 argument of type "unsigned char *" is incompatible with parameter of type "const char *restrict"
+N	printf((task_readRecievedChar()));
 N}
-Nvoid Init_Systick(void){
-N	SysTick->LOAD = 48000000 - 1;
-X	((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->LOAD = 48000000 - 1;
-N	SysTick->CTRL =        5    ;
-X	((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->CTRL =        5    ;
+Nvoid Init_SysTick(void){
+N	SysTick->LOAD = 48000000L/16;
+X	((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->LOAD = 48000000L/16;
+N	NVIC_SetPriority (SysTick_IRQn, 3); // Set the interrupt priority
+X	__NVIC_SetPriority (SysTick_IRQn, 3); 
+N	SysTick->CTRL |=            2;       // Enable the SysTick interrupt
+X	((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->CTRL |=            2;       
+N	SysTick->CTRL |=            5;       // Set the Clock and Enable the down counter
+X	((SysTick_Type *) ((0xE000E000UL) + 0x0010UL) )->CTRL |=            5;       
 N}
 N

@@ -4,14 +4,14 @@
 #include "onboard_leds.h"
 #include "motor.h"
 
-//Non premptive schedualer
+//Non premptive scheduler
 void scheduler(void){
 	while(1){
 		// Checks for characters and displays
 		task_CheckForAndProcessSerialChars();
 		// Start transmitter if it isn't already running
 
-		scanAndProcessMotorCommands(*(task_readRecievedChar()));
+		task_scanForAndProcessIfMotorCommands(*(task_readRecievedChar()));
 		
 		
 		//Check for rgb LED commands
@@ -28,21 +28,19 @@ void scheduler(void){
 			task_ControlRGB_LEDs(0, 0, 0);
 		}
 		
-		if(SysTick->CTRL & 0x10000){
-			printf(task_readRecievedChar());
-		}
-		
 		task_StartTransmitter();
 	} // End of Scheduler Loop
 }
 //----------------------------
-// Schedualing Components
+// Scheduling Components
 //----------------------------
-void Systic_Handler(void){
-
+void SysTick_Handler(void){
+	printf((task_readRecievedChar()));
 }
-void Init_Systick(void){
-	SysTick->LOAD = 48000000 - 1;
-	SysTick->CTRL =        5    ;
+void Init_SysTick(void){
+	SysTick->LOAD = 48000000L/16;
+	NVIC_SetPriority (SysTick_IRQn, 3); // Set the interrupt priority
+	SysTick->CTRL |=            2;       // Enable the SysTick interrupt
+	SysTick->CTRL |=            5;       // Set the Clock and Enable the down counter
 }
 

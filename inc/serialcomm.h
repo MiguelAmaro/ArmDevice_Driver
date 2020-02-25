@@ -25,7 +25,8 @@ void Send_String(uint8_t*       str);
 uint32_t Rx_Chars_Available(void);
 uint8_t	 Get_Rx_Char       (void);
 
-extern Q_T TxQ, RxQ;
+// For Serial: Tx = transmit & Rx = recieve
+extern queue_t transmitQ, recieveQ;
 static uint8_t buffer[80], recievedChar, * bufferPtr;
 #endif
 

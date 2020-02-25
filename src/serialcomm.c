@@ -1,7 +1,7 @@
 #include "serialcomm.h"
 #include <stdio.h>
 
-Q_T transmitQueue, receiveQueue;
+queue_t transmitQueue, receiveQueue;
 
 struct __FILE
 {
@@ -75,8 +75,8 @@ void Init_UART0(uint32_t baud_rate) {
 	UART0->S2 = UART0_S2_MSBF(0) | UART0_S2_RXINV(0); 
 	
 	// Enable interrupts. Listing 8.11 on p. 234
-	Q_Init(&transmitQueue);
-	Q_Init(&receiveQueue );
+	Init_Queue(&transmitQueue);
+	Init_Queue(&receiveQueue );
 
 	NVIC_SetPriority    (UART0_IRQn, 2); // 0, 1, 2, or 3
 	NVIC_ClearPendingIRQ(UART0_IRQn   ); 
@@ -97,7 +97,7 @@ void Init_UART0(uint32_t baud_rate) {
 
 // UART0 IRQ Handler. Listing 8.12 on p. 235
 void UART0_IRQHandler(void) {
-	uint8_t ch;
+	uint8_t recievedChar;
 	
 	if (UART0->S1 & (UART_S1_OR_MASK |UART_S1_NF_MASK | 
 		UART_S1_FE_MASK | UART_S1_PF_MASK)) {
@@ -105,13 +105,13 @@ void UART0_IRQHandler(void) {
 			UART0->S1 |= UART0_S1_OR_MASK | UART0_S1_NF_MASK | 
 									 UART0_S1_FE_MASK | UART0_S1_PF_MASK;	
 			// read the data register to clear RDRF
-			ch = UART0->D;
+			recievedChar = UART0->D;
 	}
 	if (UART0->S1 & UART0_S1_RDRF_MASK) {
 		// received a character
-		ch = UART0->D;
-		if (!Q_Full(&receiveQueue)) {
-			Q_Enqueue(&receiveQueue, ch);
+		recievedChar = UART0->D;
+		if (!isQueueFull(&receiveQueue)) {
+			enqueueChar(&receiveQueue, recievedChar);
 		} else {
 			// error - queue full.
 			// discard character
@@ -120,8 +120,8 @@ void UART0_IRQHandler(void) {
 	if ( (UART0->C2 & UART0_C2_TIE_MASK) && // transmitter interrupt enabled
 			(UART0->S1 & UART0_S1_TDRE_MASK) ) { // tx buffer empty
 		// can send another character
-		if (!Q_Empty(&transmitQueue)) {
-			UART0->D = Q_Dequeue(&transmitQueue);
+		if (!isQueueEmpty(&transmitQueue)) {
+			UART0->D = dequeueChar(&transmitQueue);
 		} else {
 			// queue is empty so disable transmitter interrupt
 			UART0->C2 &= ~UART0_C2_TIE_MASK;
@@ -129,35 +129,35 @@ void UART0_IRQHandler(void) {
 	}
 }
 
-void Send_String(uint8_t * str) {
+void Send_String(uint8_t* string) {
 	// enqueue string
-	while (*str != '\0') { // copy characters up to null terminator
-		while (Q_Full(&transmitQueue))
+	while (*string != '\0') { // copy characters up to null terminator
+		while (isQueueFull(&transmitQueue))
 			; // wait for space to open up
-		Q_Enqueue(&transmitQueue, *str);
-		str++;
+		enqueueChar(&transmitQueue, *string);
+		string++;
 	}
 	// start transmitter if it isn't already running
 	if (!(UART0->C2 & UART0_C2_TIE_MASK)) {
-		UART0->D = Q_Dequeue(&transmitQueue); 
+		UART0->D = dequeueChar(&transmitQueue); 
 		UART0->C2 |= UART0_C2_TIE(1);
 	}
 }
 
 uint32_t Rx_Chars_Available(void) {
-	return Q_Size(&receiveQueue);
+	return queueSize(&receiveQueue);
 }
 
 uint8_t	Get_Rx_Char(void) {
-	return Q_Dequeue(&receiveQueue);
+	return dequeueChar(&receiveQueue);
 }
 
 //-----------------------------------------
 // Tasks
 //-----------------------------------------
 void task_CheckForAndProcessSerialChars(void){
-	if(Q_Size(&receiveQueue)){ // check if characters have arrived
-		recievedChar = Q_Dequeue(&receiveQueue);
+	if(queueSize(&receiveQueue)){ // check if characters have arrived
+		recievedChar = dequeueChar(&receiveQueue);
 		// Blocking transmit
 		//sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
 		// Enqueue string 
@@ -175,8 +175,7 @@ void task_CheckForAndProcessSerialChars(void){
 }
 
 unsigned char* task_readRecievedChar(void){
-	unsigned char* recCharPtr = &recievedChar;
-	return recCharPtr;
+	 return (unsigned char*)(&recievedChar);
 }
 
 void task_StartTransmitter(void){

@@ -9,7 +9,7 @@
 int main (void) {
 	Init_UART0(115200);
 	Init_OnboardRGB_LEDs();
-	Init_Systick();
+	Init_SysTick();
 	Init_PortB();
 	Init_TPM0(0xFFFF, 0x07);
 	

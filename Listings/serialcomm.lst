@@ -337,7 +337,7 @@ N
 N/* end of stdint.h */
 L 5 ".\inc\serialcomm.h" 2
 N#include <MKL25Z4.h>
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -538,7 +538,7 @@ N#define __NVIC_PRIO_BITS               2         /**< Number of priority bits i
 N#define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
 N
 N#include "core_cm0plus.h"              /* Core Peripheral Access Layer */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 1
 N/**************************************************************************//**
 N * @file     core_cm0plus.h
 N * @brief    CMSIS Cortex-M0+ Core Peripheral Access Layer Header File
@@ -604,7 +604,7 @@ N  @{
 N */
 N
 N#include "cmsis_version.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_version.h
 N * @brief    CMSIS Core(M) Version definitions
@@ -647,7 +647,7 @@ N#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) | \
 N                                   __CM_CMSIS_VERSION_SUB           )       /*!< CMSIS Core(M) version number */
 X#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) |                                    __CM_CMSIS_VERSION_SUB           )        
 N#endif
-L 64 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 64 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N 
 N/*  CMSIS CM0+ definitions */
 N#define __CM0PLUS_CMSIS_VERSION_MAIN (__CM_CMSIS_VERSION_MAIN)                  /*!< \deprecated [31:16] CMSIS HAL main version */
@@ -703,7 +703,7 @@ S
 N#endif
 N
 N#include "cmsis_compiler.h"               /* CMSIS compiler specific defines */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_compiler.h
 N * @brief    CMSIS compiler generic header file
@@ -739,7 +739,7 @@ N */
 N#if   defined ( __CC_ARM )
 X#if   1L
 N  #include "cmsis_armcc.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_armcc.h
 N * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
@@ -1683,7 +1683,7 @@ N/*@} end of group CMSIS_SIMD_intrinsics */
 N
 N
 N#endif /* __CMSIS_ARMCC_H */
-L 35 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 2
+L 35 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 2
 N
 N
 N/*
@@ -1933,7 +1933,7 @@ N
 N
 N#endif /* __CMSIS_COMPILER_H */
 N
-L 116 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 116 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N
 N
 N#ifdef __cplusplus
@@ -2981,7 +2981,7 @@ N
 N#endif /* __CORE_CM0PLUS_H_DEPENDANT */
 N
 N#endif /* __CMSIS_GENERIC */
-L 199 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 199 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N#include "system_MKL25Z4.h"            /* Device specific configuration file */
 L 1 ".\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h" 1
 N/*
@@ -3325,7 +3325,7 @@ S}
 N#endif
 N
 N#endif  /* #if !defined(SYSTEM_MKL25Z4_H_) */
-L 200 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 200 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N
 N/*!
 N * @}
@@ -11575,7 +11575,7 @@ N#define QUEUE_H
 N
 N#include <stdint.h>
 N#include <MKL25Z4.h>
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -19734,22 +19734,22 @@ N
 N/* MKL25Z4.h, eof. */
 L 6 ".\inc\queue.h" 2
 N
-N#define Q_MAX_SIZE (256)
+N#define MAX_QUEUE_SIZE (256)
 N
 Ntypedef struct {
 N  unsigned int Head; // Index of oldest data element 
 N  unsigned int Tail; // Index of next free space
 N  unsigned int Size; // Number of elements in use
-N  uint8_t Data[Q_MAX_SIZE];
+N  uint8_t Data[MAX_QUEUE_SIZE];
 X  uint8_t Data[(256)];
-N} volatile Q_T;
+N} volatile queue_t;
 N
-Nextern void Q_Init (Q_T* q);
-Nextern int  Q_Empty(Q_T* q);
-Nextern int  Q_Full (Q_T* q);
-Nextern int  Q_Size (Q_T* q);
-Nextern int     Q_Enqueue(Q_T* q, uint8_t d);
-Nextern uint8_t Q_Dequeue(Q_T* q           );
+Nextern void Init_Queue  (queue_t*);
+Nextern int  isQueueEmpty(queue_t*);
+Nextern int  isQueueFull (queue_t*);
+Nextern int  queueSize   (queue_t*);
+Nextern int     enqueueChar(queue_t*, uint8_t);
+Nextern uint8_t dequeueChar(queue_t*         );
 N
 N
 N#endif // QUEUE_H
@@ -19776,7 +19776,8 @@ N
 Nuint32_t Rx_Chars_Available(void);
 Nuint8_t	 Get_Rx_Char       (void);
 N
-Nextern Q_T TxQ, RxQ;
+N// For Serial: Tx = transmit & Rx = recieve
+Nextern queue_t transmitQ, recieveQ;
 Nstatic uint8_t buffer[80], recievedChar, * bufferPtr;
 N#endif
 N
@@ -20895,7 +20896,7 @@ N/* end of stdio.h */
 N
 L 3 "src\serialcomm.c" 2
 N
-NQ_T transmitQueue, receiveQueue;
+Nqueue_t transmitQueue, receiveQueue;
 N
 Nstruct __FILE
 N{
@@ -20993,8 +20994,8 @@ N	UART0->S2 = UART0_S2_MSBF(0) | UART0_S2_RXINV(0);
 X	((UART0_Type *)(0x4006A000u))->S2 = (((uint8_t)(((uint8_t)(0))<<5))&0x20u) | (((uint8_t)(((uint8_t)(0))<<4))&0x10u); 
 N	
 N	// Enable interrupts. Listing 8.11 on p. 234
-N	Q_Init(&transmitQueue);
-N	Q_Init(&receiveQueue );
+N	Init_Queue(&transmitQueue);
+N	Init_Queue(&receiveQueue );
 N
 N	NVIC_SetPriority    (UART0_IRQn, 2); // 0, 1, 2, or 3
 X	__NVIC_SetPriority    (UART0_IRQn, 2); 
@@ -21022,7 +21023,7 @@ N}
 N
 N// UART0 IRQ Handler. Listing 8.12 on p. 235
 Nvoid UART0_IRQHandler(void) {
-N	uint8_t ch;
+N	uint8_t recievedChar;
 N	
 N	if (UART0->S1 & (UART_S1_OR_MASK |UART_S1_NF_MASK | 
 X	if (((UART0_Type *)(0x4006A000u))->S1 & (0x8u |0x4u | 
@@ -21034,16 +21035,16 @@ X			((UART0_Type *)(0x4006A000u))->S1 |= 0x8u | 0x4u |
 N									 UART0_S1_FE_MASK | UART0_S1_PF_MASK;	
 X									 0x2u | 0x1u;	
 N			// read the data register to clear RDRF
-N			ch = UART0->D;
-X			ch = ((UART0_Type *)(0x4006A000u))->D;
+N			recievedChar = UART0->D;
+X			recievedChar = ((UART0_Type *)(0x4006A000u))->D;
 N	}
 N	if (UART0->S1 & UART0_S1_RDRF_MASK) {
 X	if (((UART0_Type *)(0x4006A000u))->S1 & 0x20u) {
 N		// received a character
-N		ch = UART0->D;
-X		ch = ((UART0_Type *)(0x4006A000u))->D;
-N		if (!Q_Full(&receiveQueue)) {
-N			Q_Enqueue(&receiveQueue, ch);
+N		recievedChar = UART0->D;
+X		recievedChar = ((UART0_Type *)(0x4006A000u))->D;
+N		if (!isQueueFull(&receiveQueue)) {
+N			enqueueChar(&receiveQueue, recievedChar);
 N		} else {
 N			// error - queue full.
 N			// discard character
@@ -21054,9 +21055,9 @@ X	if ( (((UART0_Type *)(0x4006A000u))->C2 & 0x80u) &&
 N			(UART0->S1 & UART0_S1_TDRE_MASK) ) { // tx buffer empty
 X			(((UART0_Type *)(0x4006A000u))->S1 & 0x80u) ) { 
 N		// can send another character
-N		if (!Q_Empty(&transmitQueue)) {
-N			UART0->D = Q_Dequeue(&transmitQueue);
-X			((UART0_Type *)(0x4006A000u))->D = Q_Dequeue(&transmitQueue);
+N		if (!isQueueEmpty(&transmitQueue)) {
+N			UART0->D = dequeueChar(&transmitQueue);
+X			((UART0_Type *)(0x4006A000u))->D = dequeueChar(&transmitQueue);
 N		} else {
 N			// queue is empty so disable transmitter interrupt
 N			UART0->C2 &= ~UART0_C2_TIE_MASK;
@@ -21065,38 +21066,38 @@ N		}
 N	}
 N}
 N
-Nvoid Send_String(uint8_t * str) {
+Nvoid Send_String(uint8_t* string) {
 N	// enqueue string
-N	while (*str != '\0') { // copy characters up to null terminator
-N		while (Q_Full(&transmitQueue))
+N	while (*string != '\0') { // copy characters up to null terminator
+N		while (isQueueFull(&transmitQueue))
 N			; // wait for space to open up
-N		Q_Enqueue(&transmitQueue, *str);
-N		str++;
+N		enqueueChar(&transmitQueue, *string);
+N		string++;
 N	}
 N	// start transmitter if it isn't already running
 N	if (!(UART0->C2 & UART0_C2_TIE_MASK)) {
 X	if (!(((UART0_Type *)(0x4006A000u))->C2 & 0x80u)) {
-N		UART0->D = Q_Dequeue(&transmitQueue); 
-X		((UART0_Type *)(0x4006A000u))->D = Q_Dequeue(&transmitQueue); 
+N		UART0->D = dequeueChar(&transmitQueue); 
+X		((UART0_Type *)(0x4006A000u))->D = dequeueChar(&transmitQueue); 
 N		UART0->C2 |= UART0_C2_TIE(1);
 X		((UART0_Type *)(0x4006A000u))->C2 |= (((uint8_t)(((uint8_t)(1))<<7))&0x80u);
 N	}
 N}
 N
 Nuint32_t Rx_Chars_Available(void) {
-N	return Q_Size(&receiveQueue);
+N	return queueSize(&receiveQueue);
 N}
 N
 Nuint8_t	Get_Rx_Char(void) {
-N	return Q_Dequeue(&receiveQueue);
+N	return dequeueChar(&receiveQueue);
 N}
 N
 N//-----------------------------------------
 N// Tasks
 N//-----------------------------------------
 Nvoid task_CheckForAndProcessSerialChars(void){
-N	if(Q_Size(&receiveQueue)){ // check if characters have arrived
-N		recievedChar = Q_Dequeue(&receiveQueue);
+N	if(queueSize(&receiveQueue)){ // check if characters have arrived
+N		recievedChar = dequeueChar(&receiveQueue);
 N		// Blocking transmit
 N		//sprintf((char* ) buffer, "You pressed %c\n\r", recievedChar);
 N		// Enqueue string 
@@ -21114,8 +21115,7 @@ N	}
 N}
 N
 Nunsigned char* task_readRecievedChar(void){
-N	unsigned char* recCharPtr = &recievedChar;
-N	return recCharPtr;
+N	 return (unsigned char*)(&recievedChar);
 N}
 N
 Nvoid task_StartTransmitter(void){

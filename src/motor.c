@@ -21,7 +21,7 @@ void Init_TPM0(uint16_t modulo, uint32_t prescaler){
 }
 
 void startTPM0Counter(uint16_t modulo, uint32_t prescaler){
-	TPM0->MOD = modulo-1; //Modulo set 1500 for a 32 microsecond timer ( 48mHz/1500 = .032MHz)
+	TPM0->MOD =  modulo-1; //Modulo set 1500 for a 32 microsecond timer ( 48mHz/1500 = .032MHz)
 	TPM0->SC |= prescaler; //Set the Prescaler
 	
 	TPM0->SC |= 0x80; //Clear Overthrow Flag
@@ -52,7 +52,7 @@ void Init_PortB(void){
 	return;
 }
 
-void task_pulse(uint32_t motorPin, uint16_t modulo, uint32_t prescaler) {
+void task_pulseStepperMotor(uint32_t motorPin, uint16_t modulo, uint32_t prescaler) {
 	GPIOB->PSOR |= motorPin;
 	startTPM0Counter(modulo, prescaler);
 	
@@ -89,7 +89,7 @@ void TPM0_IRQHandler(void){
 	return;
 }
 
-void motorComponentStatusCheck(void){
+void task_motorComponentStatusCheck(void){
 	//Check Pin Volage
 	GPIOB->PSOR |= PAN_PTB_PIN00_PUL;
 	GPIOB->PSOR |= PAN_PTB_PIN01_DIR;
@@ -104,29 +104,34 @@ void motorComponentStatusCheck(void){
 			TPM0->SC |= 0x80;
 	}
 	
-	
 	return;
 }
 
-void scanAndProcessMotorCommands(unsigned char recievedChar){
-			//Check for motor commands
-		
+void task_scanForAndProcessIfMotorCommands(unsigned char recievedChar){
+		//Check for motor commands
+	
+		// Pan Processing
 		if     (recievedChar == PAN_LEFT ){
 			motorState &= ~PAN_DIRECTION_REVERSED;
-			task_pulse(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
+			task_pulseStepperMotor(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
 		}
-		if     (recievedChar == PAN_RIGHT){
-			if(!(motorState & PAN_DIRECTION_REVERSED))
+		
+		if(recievedChar == PAN_RIGHT)
+		{
+			if( !(motorState & PAN_DIRECTION_REVERSED))
 			{
 				task_changeDirection(PAN_PTB_PIN01_DIR, 0x002F, 0x00 );
 				motorState |= PAN_DIRECTION_REVERSED;
 			}
-			task_pulse          (PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
+			
+			task_pulseStepperMotor(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
 		}
+		
+		// Tilt Processing
 		else if(recievedChar == TILT_UP  ){
-			task_pulse(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
+			task_pulseStepperMotor(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
 		} 
 		else if(recievedChar == TILT_DOWN){
-			task_pulse(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
+			task_pulseStepperMotor(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
 		}
 }
