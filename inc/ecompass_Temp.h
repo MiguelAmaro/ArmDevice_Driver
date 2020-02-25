@@ -14,16 +14,19 @@
 #include <Wire.h>            // Is this a dependency???
 
 /*=========================================================================
-	 I2C ADDRESS/BITS AND SETTINGS
+	 I2C ADDRESS/BITS AND SETTINGS  
 	 -----------------------------------------------------------------------*/
+	 /*
 #define FXOS8700_ADDRESS (0x1F) // 0011111
 
 #define FXOS8700_ID (0xC7) // 1100 0111
+*/
 /*=========================================================================*/
 
 /*=========================================================================
 	 REGISTERS
 	 -----------------------------------------------------------------------*/
+	 /*
 typedef enum {
  FXOS8700_REGISTER_STATUS = 0x00,    
  FXOS8700_REGISTER_OUT_X_MSB = 0x01, 
@@ -59,86 +62,122 @@ typedef enum {
  FXOS8700_REGISTER_MCTRL_REG3 =
 		 0x5D, 
 } fxos8700Registers_t;
+*/
 /*=========================================================================*/
 
 /*=========================================================================
 	 OPTIONAL SPEED SETTINGS
 	 -----------------------------------------------------------------------*/
+	 /*
 typedef enum {
  ACCEL_RANGE_2G = 0x00, 
  ACCEL_RANGE_4G = 0x01, 
  ACCEL_RANGE_8G = 0x02  
 } fxos8700AccelRange_t;
+*/
 /*=========================================================================*/
 
 /*=========================================================================
 	 RAW GYROSCOPE DATA TYPE
 	 -----------------------------------------------------------------------*/
+	 /*
 typedef struct {
  int16_t x; 
  int16_t y; 
  int16_t z; 
 } fxos8700RawData_t;
+*/
 /*=========================================================================*/
+// Foward Decleration!!!! Can't make this work with typedef
+/*
+class Adafruit_FXOS8700; // Da fuck is this?????
+*/
+/*
 
-class Adafruit_FXOS8700;
 
-class Adafruit_FXOS8700_Accelerometer : public Adafruit_Sensor {
+// Accelerometer Class
+//
+//
+class Adafruit_FXOS8700_Accelerometer : public Adafruit_Sensor { // Inheritance 
 public:
- Adafruit_FXOS8700_Accelerometer(Adafruit_FXOS8700 *parent) {
-	 _theFXOS8700 = parent;
- }
- bool getEvent(sensors_event_t *);
+// Constructor
+ Adafruit_FXOS8700_Accelerometer(Adafruit_FXOS8700 *parent) {_theFXOS8700 = parent;}
+ 
+// Methods
+ bool getEvent( *);
  void getSensor(sensor_t *);
 
 private:
+// Variables
  int _sensorID = 8701;
  Adafruit_FXOS8700 *_theFXOS8700 = NULL;
 };
-
-class Adafruit_FXOS8700_Magnetometer : public Adafruit_Sensor {
+*/
+/**************************************************************************/
+/**************************************************************************/
+/*
+// Magnetometer Class
+//
+//
+class  : public Adafruit_Sensor {
 public:
- Adafruit_FXOS8700_Magnetometer(Adafruit_FXOS8700 *parent) {
-	 _theFXOS8700 = parent;
- }
- bool getEvent(sensors_event_t *);
+// Constuctor
+ Adafruit_FXOS8700_Magnetometer(Adafruit_FXOS8700 *parent) {_theFXOS8700 = parent;}
+ 
+// Methods
+ bool getEvent (sensors_event_t *);
  void getSensor(sensor_t *);
 
 private:
+// Variables
  int _sensorID = 8702;
  Adafruit_FXOS8700 *_theFXOS8700 = NULL;
 };
+*/
+/**************************************************************************/
+/**************************************************************************/
 
-/**************************************************************************/
-/**************************************************************************/
+
 class Adafruit_FXOS8700 : public Adafruit_Sensor {
 public:
+	/*
+// Constructor
  Adafruit_FXOS8700(int32_t accelSensorID = -1, int32_t magSensorID = -1);
 
- bool begin(fxos8700AccelRange_t rng = ACCEL_RANGE_2G);
- bool getEvent(sensors_event_t *accel);
+// Methods
+ bool begin    (fxos8700AccelRange_t rng = ACCEL_RANGE_2G);
+ bool getEvent (sensors_event_t *accel);
  void getSensor(sensor_t *accel);
- bool getEvent(sensors_event_t *accel, sensors_event_t *mag);
+ bool getEvent (sensors_event_t *accel, sensors_event_t *mag);
  void getSensor(sensor_t *accel, sensor_t *mag);
- void standby(boolean standby);
-
+ void standby  (boolean standby);
+*/
+/*
+// Variables
  fxos8700RawData_t accel_raw;
- fxos8700RawData_t mag_raw;
-
- Adafruit_Sensor *getMagnetometerSensor(void);
+ fxos8700RawData_t   mag_raw;
+*/
+/*
+// Methods
+ Adafruit_Sensor *getMagnetometerSensor (void);
  Adafruit_Sensor *getAccelerometerSensor(void);
-
- Adafruit_FXOS8700_Accelerometer *accel_sensor =
-		 NULL; 
- Adafruit_FXOS8700_Magnetometer *mag_sensor = NULL; 
-
+*/
+/*
+ Adafruit_FXOS8700_Accelerometer *accel_sensor = NULL; 
+ Adafruit_FXOS8700_Magnetometer *mag_sensor    = NULL; 
+*/
+/*
 private:
+// Methods
  void write8(byte reg, byte value);
- byte read8(byte reg);
-
+ byte read8 (byte reg);
+ */
+/*
+// Variables
  fxos8700AccelRange_t _range;
  int32_t _accelSensorID;
  int32_t _magSensorID;
+ */
 };
 
 #endif
