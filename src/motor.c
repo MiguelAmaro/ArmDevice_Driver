@@ -111,27 +111,34 @@ void task_scanForAndProcessIfMotorCommands(unsigned char recievedChar){
 		//Check for motor commands
 	
 		// Pan Processing
-		if     (recievedChar == PAN_LEFT ){
-			motorState &= ~PAN_DIRECTION_REVERSED;
+		if     (recievedChar == PAN_RIGHT ){
+			if(panDirectionReversed == 1)
+			{
+				task_changeDirection(PAN_PTB_PIN01_DIR, 0x002F, 0x00 );
+				panDirectionReversed = 0;
+			}
+			
 			task_pulseStepperMotor(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
 		}
 		
-		if(recievedChar == PAN_RIGHT)
+		else if(recievedChar == PAN_LEFT)
 		{
-			if( !(motorState & PAN_DIRECTION_REVERSED))
+			if( panDirectionReversed == 0)
 			{
 				task_changeDirection(PAN_PTB_PIN01_DIR, 0x002F, 0x00 );
-				motorState |= PAN_DIRECTION_REVERSED;
+				panDirectionReversed = 1;
 			}
 			
 			task_pulseStepperMotor(PAN_PTB_PIN00_PUL, 0x002F, 0x00 );
 		}
 		
 		// Tilt Processing
-		else if(recievedChar == TILT_UP  ){
+	 if(recievedChar == TILT_UP  ){
 			task_pulseStepperMotor(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
 		} 
 		else if(recievedChar == TILT_DOWN){
 			task_pulseStepperMotor(TILT_PTB_PIN03_PUL, 0x002F, 0x00);
 		}
+		
+		return;
 }

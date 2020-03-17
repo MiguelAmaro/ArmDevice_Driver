@@ -19,7 +19,10 @@
 
 // States
 static uint8_t motorState = 0x00;
+
+static uint8_t panDirectionReversed = 0;
 #define PAN_DIRECTION_REVERSED  0x01
+static uint8_t tiltDirectionReversed = 0;
 #define TILT_DIRECTION_REVERSED 0x02
 
 // Private
