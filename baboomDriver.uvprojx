@@ -380,7 +380,7 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Sources</GroupName>
+          <GroupName>main</GroupName>
           <Files>
             <File>
               <FileName>main.c</FileName>
@@ -388,49 +388,64 @@
               <FilePath>.\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\queue.c</FilePath>
+              <FileName>cycler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\cycler.h</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Motor</GroupName>
+          <Files>
             <File>
-              <FileName>onboard_leds.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\onboard_leds.c</FilePath>
-            </File>
-            <File>
-              <FileName>scheduler.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\scheduler.c</FilePath>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\motor.h</FilePath>
             </File>
             <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\motor.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Timer</GroupName>
+          <Files>
             <File>
-              <FileName>ecompass.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\ecompass.c</FilePath>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\timer.h</FilePath>
             </File>
             <File>
-              <FileName>ecompassSensor.c</FileName>
+              <FileName>timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\ecompassSensor.c</FilePath>
+              <FilePath>.\src\timer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Queue</GroupName>
+          <Files>
+            <File>
+              <FileName>queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\queue.h</FilePath>
             </File>
             <File>
-              <FileName>ecompassSensor_Temp.c</FileName>
+              <FileName>queue.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\ecompassSensor_Temp.c</FilePath>
+              <FilePath>.\src\queue.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SerialComm</GroupName>
+          <Files>
             <File>
-              <FileName>Wire_Temp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Wire_Temp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ecompass_Temp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\ecompass_Temp.c</FilePath>
+              <FileName>serialcomm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\serialcomm.h</FilePath>
             </File>
             <File>
               <FileName>serialcomm.c</FileName>
@@ -440,62 +455,62 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Headers</GroupName>
+          <GroupName>OnBoardLed</GroupName>
           <Files>
             <File>
-              <FileName>onboard_leds.h</FileName>
+              <FileName>onboardLeds.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\inc\onboard_leds.h</FilePath>
+              <FilePath>.\inc\onboardLeds.h</FilePath>
             </File>
             <File>
-              <FileName>queue.h</FileName>
+              <FileName>onboardLeds.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\onboardLeds.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Port</GroupName>
+          <Files>
+            <File>
+              <FileName>port.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\inc\queue.h</FilePath>
+              <FilePath>.\inc\port.h</FilePath>
             </File>
             <File>
-              <FileName>serialcomm.h</FileName>
+              <FileName>port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\port.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Systick</GroupName>
+          <Files>
+            <File>
+              <FileName>systick.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\inc\serialcomm.h</FilePath>
+              <FilePath>.\inc\systick.h</FilePath>
             </File>
             <File>
-              <FileName>scheduler.h</FileName>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\systick.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Other</GroupName>
+          <Files>
+            <File>
+              <FileName>systemMacros.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\inc\scheduler.h</FilePath>
+              <FilePath>.\inc\systemMacros.h</FilePath>
             </File>
             <File>
-              <FileName>motor.h</FileName>
+              <FileName>systemHelper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\inc\motor.h</FilePath>
-            </File>
-            <File>
-              <FileName>ecompass.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\ecompass.h</FilePath>
-            </File>
-            <File>
-              <FileName>ecompassSensor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\ecompassSensor.h</FilePath>
-            </File>
-            <File>
-              <FileName>ecompassSensor_Temp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\ecompassSensor_Temp.h</FilePath>
-            </File>
-            <File>
-              <FileName>Wire_Temp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\Wire_Temp.h</FilePath>
-            </File>
-            <File>
-              <FileName>ecompass_Temp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\ecompass_Temp.h</FilePath>
-            </File>
-            <File>
-              <FileName>Arduino.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\Arduino.h</FilePath>
+              <FilePath>.\inc\systemHelper.h</FilePath>
             </File>
           </Files>
         </Group>
