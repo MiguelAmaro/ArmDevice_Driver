@@ -6,8 +6,8 @@
 #include <stdint.h>
 
 #define UART_OVERSAMPLE_RATE 	(16)
-#define BUS_CLOCK 						(24e6)
-#define SYS_CLOCK							(48e6)
+#define BUS_CLOCK             (24e6)
+#define SYS_CLOCK             (48e6)
 
 //----------------------------
 // Tasks
