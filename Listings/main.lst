@@ -1,4 +1,11 @@
 L 1 "src\main.c"
+N//**********************************************
+N// VERSION 01.00.00
+N
+N
+N
+N//**********************************************
+N
 N#include <MKL25Z4.h>
 L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
@@ -11561,7 +11568,7 @@ S  #endif /* (MCU_MEM_MAP_VERSION != 0x0200u) */
 N#endif  /* #if !defined(MKL25Z4_H_) */
 N
 N/* MKL25Z4.h, eof. */
-L 2 "src\main.c" 2
+L 9 "src\main.c" 2
 N
 N#include "cycler.h"
 L 1 ".\inc\cycler.h" 1
@@ -27952,16 +27959,16 @@ L 6 ".\inc\serialcomm.h" 2
 N#include <stdint.h>
 N
 N#define UART_OVERSAMPLE_RATE 	(16)
-N#define BUS_CLOCK 						(24e6)
-N#define SYS_CLOCK							(48e6)
+N#define BUS_CLOCK             (24e6)
+N#define SYS_CLOCK             (48e6)
 N
 N//----------------------------
 N// Tasks
 N//----------------------------
-Nvoid serialcomm_CheckForAndProcessSerialChars(void);
-Nvoid serialcomm_StartTransmitter(void);
-Nuint8_t* serialcomm_readReceivedChar(void);
-Nvoid   serialcomm_clearReceivedChar(void);
+Nvoid     serialcomm_CheckForAndProcessSerialChars(void);
+Nvoid     serialcomm_StartTransmitter (void);
+Nuint8_t* serialcomm_readReceivedChar (void);
+Nvoid     serialcomm_clearReceivedChar(void);
 N
 N//----------------------------
 N// Supporting Functions
@@ -28030,7 +28037,7 @@ N	} // End of Scheduler Loop
 N}
 N
 N#endif
-L 4 "src\main.c" 2
+L 11 "src\main.c" 2
 N#include "port.h"
 L 1 ".\inc\port.h" 1
 N#ifndef _PORT_H_
@@ -36212,7 +36219,7 @@ Nvoid togglePin ( uint8_t pin, GPIO_Type* port );
 N
 N#endif
 N
-L 5 "src\main.c" 2
+L 12 "src\main.c" 2
 N#include "timer.h"
 L 1 ".\inc\timer.h" 1
 N#ifndef _TIMER_H_
@@ -44408,7 +44415,7 @@ Nvoid clearChannelFlag    (uint8_t channel, TPM_Type* timer);
 Nvoid clearAllChannelFlags(                 TPM_Type* timer);
 N#endif
 N
-L 6 "src\main.c" 2
+L 13 "src\main.c" 2
 N#include "serialcomm.h"
 N#include "motor.h"
 N#include "onboardLeds.h"
@@ -52581,7 +52588,7 @@ Nvoid Init_SysTick(uint16_t);
 N
 N#endif
 N
-L 10 "src\main.c" 2
+L 17 "src\main.c" 2
 N#include "systemMacros.h"
 L 1 ".\inc\systemMacros.h" 1
 N#ifndef SYSTEM_MACROS_H
@@ -52619,7 +52626,7 @@ N	#define PIN01_LASERCTRL (1) // port C
 N
 N#endif
 N
-L 11 "src\main.c" 2
+L 18 "src\main.c" 2
 N#include "systemHelper.h" 
 L 1 ".\inc\systemHelper.h" 1
 N#ifndef SYSTEM_HELPER
@@ -52635,7 +52642,7 @@ N#define MASK(x) (1UL << (x));
 N
 N#endif
 N
-L 12 "src\main.c" 2
+L 19 "src\main.c" 2
 N#include <stdio.h>
 L 1 "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h" 1
 N/* stdio.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.9 */
@@ -53748,7 +53755,7 @@ N#endif /* ndef __stdio_h */
 N
 N/* end of stdio.h */
 N
-L 13 "src\main.c" 2
+L 20 "src\main.c" 2
 N
 Nint main (void) {
 N	uint16_t TPM0_TimeModulo = 21000;
@@ -53781,7 +53788,7 @@ X
 N}
 N
 N//----------------------------
-N// INTERRUPT DERFENTIONS
+N// INTERRUPT DEFENTIONS
 N//----------------------------
 Nvoid SysTick_Handler(void){
 N	static volatile uint8_t ledState = 0;

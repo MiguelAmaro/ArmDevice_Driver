@@ -48,7 +48,7 @@ int main (void) {
 }
 
 //----------------------------
-// INTERRUPT DERFENTIONS
+// INTERRUPT DEFENTIONS
 //----------------------------
 void SysTick_Handler(void){
 	static volatile uint8_t ledState = 0;

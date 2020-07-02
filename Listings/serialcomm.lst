@@ -19757,16 +19757,16 @@ L 6 ".\inc\serialcomm.h" 2
 N#include <stdint.h>
 N
 N#define UART_OVERSAMPLE_RATE 	(16)
-N#define BUS_CLOCK 						(24e6)
-N#define SYS_CLOCK							(48e6)
+N#define BUS_CLOCK             (24e6)
+N#define SYS_CLOCK             (48e6)
 N
 N//----------------------------
 N// Tasks
 N//----------------------------
-Nvoid serialcomm_CheckForAndProcessSerialChars(void);
-Nvoid serialcomm_StartTransmitter(void);
-Nuint8_t* serialcomm_readReceivedChar(void);
-Nvoid   serialcomm_clearReceivedChar(void);
+Nvoid     serialcomm_CheckForAndProcessSerialChars(void);
+Nvoid     serialcomm_StartTransmitter (void);
+Nuint8_t* serialcomm_readReceivedChar (void);
+Nvoid     serialcomm_clearReceivedChar(void);
 N
 N//----------------------------
 N// Supporting Functions
