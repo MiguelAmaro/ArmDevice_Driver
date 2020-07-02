@@ -12,10 +12,10 @@
 //----------------------------
 // Tasks
 //----------------------------
-void serialcomm_CheckForAndProcessSerialChars(void);
-void serialcomm_StartTransmitter(void);
-uint8_t* serialcomm_readReceivedChar(void);
-void   serialcomm_clearReceivedChar(void);
+void     serialcomm_CheckForAndProcessSerialChars(void);
+void     serialcomm_StartTransmitter(void);
+uint8_t* serialcomm_readReceivedChar (void);
+void     serialcomm_clearReceivedChar(void);
 
 //----------------------------
 // Supporting Functions
