@@ -8,4 +8,6 @@ void Init_SysTick(uint16_t divisor){
 
 	SysTick->CTRL |= 2;       // Enable the SysTick interrupt
 	SysTick->CTRL |= 5;       // Set the Clock and Enable the down counter
+	
+	return;
 }
