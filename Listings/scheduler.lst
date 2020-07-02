@@ -37258,24 +37258,32 @@ N
 N// Pan/Tilt Pulse and Direction Pins
 N#define PAN_PTB_PIN00_PUL (0x001)
 N#define PAN_PTB_PIN01_DIR (0x002)
-N
+N/*
 N#define TILT_PTB_PIN03_PUL (0x004)
 N#define TILT_PTB_PIN04_DIR (0x008)
-N
+N*/
 N// Motor Movements
 N#define PAN_LEFT  ('A')
 N#define PAN_RIGHT ('B')
+N/*
 N#define TILT_UP   ('C')
 N#define TILT_DOWN ('D')
+N*/
 N
+N// Last Motor command
+N//volatile static uint8_t currPanCmd = 0x00;
+Nvolatile static uint8_t lastPanCmd = 0; //Store at the end of opr; default val is direction motor spin on start up
 N// States
+N/*
 Nstatic uint8_t motorState = 0x00;
 N
-Nstatic uint8_t panDirectionReversed = 0;
-N#define PAN_DIRECTION_REVERSED  0x01
+Nstatic uint8_t panDirectionReversed  = 0;
 Nstatic uint8_t tiltDirectionReversed = 0;
+N*/
+N/*
+N#define PAN_DIRECTION_REVERSED  0x01
 N#define TILT_DIRECTION_REVERSED 0x02
-N
+N*/
 N// Private
 N
 Nstatic void startTPM0Counter(uint16_t, uint32_t);
@@ -37288,6 +37296,7 @@ Nvoid task_pulseStepperMotor(uint32_t, uint16_t, uint32_t);
 Nvoid task_changeDirection  (uint32_t, uint16_t, uint32_t);
 Nvoid task_scanForAndProcessIfMotorCommands(unsigned char recievedChar);
 Nvoid task_motorComponentStatusCheck(void);
+Nvoid shouldPanDirectionChange(void);
 Nstatic uint8_t g_PulseCmd = 0;
 N
 N#endif
