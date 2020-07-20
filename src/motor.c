@@ -7,24 +7,38 @@
 #include "timer.h"
 #include "stdlib.h"
 
+void Init_MotorController(void) {
+	Enable_PortB();
+	
+	configPin(  PAN_PUL, PORTB, GPIO);
+	configPin(  PAN_DIR, PORTB, GPIO);
+	configPin( TILT_PUL, PORTB, GPIO);
+	configPin( TILT_DIR, PORTB, GPIO);
+	
+	setToOutputPin( PAN_PUL | PAN_DIR | TILT_PUL | TILT_DIR, PTB);
+	setHighPin    ( PAN_PUL | PAN_DIR | TILT_PUL | TILT_DIR, PTB);
+	
+	return;
+}
+
 //----------------------------
 // Pan
 //----------------------------
 void pulseStepperMotorPan(void) {	
-	setLowPin(PIN00_PUL, GPIOB);
+	setLowPin(PAN_PUL, GPIOB);
 	startTPMCounter(TPM0, 0, 0);
 	
 	return;
 }
 
 void setDirectionCWPan(void){
-	setHighPin(PIN01_DIR, GPIOB);
+	setHighPin(PAN_DIR, GPIOB);
 
 	return;
 }
 
 void setDirectionCCWPan(void){
-	setLowPin(PIN01_DIR, GPIOB);
+	setLowPin(PAN_DIR, GPIOB);
 
 	return;
 }
@@ -33,20 +47,20 @@ void setDirectionCCWPan(void){
 // Tilt
 //----------------------------
 void pulseStepperMotorTilt(void) {	
-	setLowPin(PIN02_PUL, GPIOB);
+	setLowPin(TILT_PUL, GPIOB);
 	startTPMCounter(TPM1, 0, 0);
 	
 	return;
 }
 
 void setDirectionCWTilt(void){
-	setHighPin(PIN03_DIR, GPIOB);
+	setHighPin(TILT_DIR, GPIOB);
 
 	return;
 }
 
 void setDirectionCCWTilt(void){
-	setLowPin(PIN03_DIR, GPIOB);
+	setLowPin(TILT_DIR, GPIOB);
 
 	return;
 }
@@ -55,7 +69,7 @@ void setDirectionCCWTilt(void){
 // General
 //----------------------------
 void switchDirection(void){
-	togglePin(PIN01_DIR, GPIOB);
+	togglePin(PAN_DIR, GPIOB);
 
 	return;
 }

@@ -21,15 +21,15 @@
 // I/0 PIN DEFENITIONS
 //----------------------------
 	// Motor Module
-	#define PIN00_PUL (0)
-	#define PIN01_DIR (1)
-	#define PIN02_PUL (2)
-	#define PIN03_DIR (3)
+	#define PAN_PUL  (0) // port B
+	#define PAN_DIR  (1) // port B
+	#define TILT_PUL (2) // port B
+	#define TILT_DIR (3) // port B
 	// OnBoardLeds Module
 	#define RED_LED_POS    (18) // port B
 	#define GREEN_LED_POS  (19) // port B
 	#define BLUE_LED_POS    (1) // port D
-	#define PIN01_LASERCTRL (1) // port C
+	#define LASERCTRL       (1) // port C
 
 #endif
 

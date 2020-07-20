@@ -3,6 +3,8 @@
 
 #include "stdint.h"
 
+void Init_MotorController(void);
+
 void switchDirection  (void);
 void pulseStepperMotorPan(void);
 void setDirectionCWPan   (void);

@@ -3,6 +3,8 @@
 
 #include "stdint.h"
 
+void Init_OnboardLed(void);
+
 void executeLightingProccesses(uint8_t cmd);
 void onboardLEDToggle    (uint8_t redOn, uint8_t greenOn, uint8_t blueOn);
 void onboardLEDAutoToggle(uint8_t redOn, uint8_t greenOn, uint8_t blueOn);

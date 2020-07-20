@@ -1,5 +1,6 @@
 #include "MKL25Z4.h" // Device header
 
+#include "port.h"
 #include "timer.h"
 #include "motor.h"
 #include "systemHelper.h"
@@ -24,6 +25,10 @@ void Init_TPM0(uint16_t modulo, uint8_t prescaler){
 }
 
 void Init_TPM1(uint16_t modulo, uint8_t prescaler){
+	Enable_PortA();
+	configPin( 12, PORTA, TPM_CH_OUTPUT);
+	configPin( 13, PORTA, TPM_CH_OUTPUT);
+	
 	SIM->SOPT2 |= SIM_SOPT2_TPMSRC(1); //Clock Source set to MCGFLL System Option (set once for all TPMs)
 	SIM->SCGC6 |= SIM_SCGC6_TPM1_MASK; //Enable clock access to TPM1
 	

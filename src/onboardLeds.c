@@ -5,6 +5,27 @@
 #include "onboardLeds.h"
 #include <stdio.h>
 
+void Init_OnboardLed(){
+	Enable_PortB();
+	configPin(  RED_LED_POS, PORTB, GPIO);
+	configPin(GREEN_LED_POS, PORTB, GPIO);
+	
+	setToOutputPin( RED_LED_POS | GREEN_LED_POS, PTB);
+	setHighPin    ( RED_LED_POS | GREEN_LED_POS, PTB);
+	
+	Enable_PortC();
+	configPin(LASERCTRL ,PORTC, GPIO);
+	setToOutputPin( LASERCTRL, PTB);
+	setHighPin    ( LASERCTRL, PTB);
+	
+	Enable_PortD();
+	configPin(BLUE_LED_POS, PORTD, GPIO);
+	setToOutputPin(BLUE_LED_POS, PTD);
+	setHighPin    (BLUE_LED_POS, PTD);
+	                                                                      
+	return;
+}
+
 void executeLightingProccesses(uint8_t cmd){
 		//Check for rgb LED commands
 		if     (cmd == RED_ONBOARDLED_ON){
@@ -46,13 +67,13 @@ void onboardLEDAutoToggle(uint8_t redOn, uint8_t greenOn, uint8_t blueOn) {
 }
 
 void laserEnable (void) {
-	setLowPin(PIN01_LASERCTRL, PTC);
+	setLowPin( LASERCTRL, PTC);
 	
 	return;
 }
 
 void laserDisable(void) {
-	setHighPin(PIN01_LASERCTRL, PTC);
+	setHighPin( LASERCTRL, PTC);
 	
 	return;
 }

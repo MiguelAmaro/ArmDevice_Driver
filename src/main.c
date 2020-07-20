@@ -27,12 +27,8 @@ int main (void) {
 	Init_SysTick(1);
 	Init_UART0(115200);
 	
-	Init_PortA();
-	Init_PortB();
-	Init_PortC();
-	Init_PortD();
-	Init_PortE();
-	
+	Init_MotorController();
+	Init_OnboardLed();
 	Init_TPM0(TPM0_TimeModulo, 1); //Param 2 Options: 1 2 4 8 16 32 64 128
 	Init_TPM1(TPM1_TimeModulo, 1);
 	
@@ -69,14 +65,14 @@ void SysTick_Handler(void){
 
 void TPM0_IRQHandler(void){	
 	stopTPMCounter(TPM0);
-	setHighPin(PIN00_PUL, GPIOB);
+	setHighPin(PAN_PUL, GPIOB);
 
 	return;
 }
 
 void TPM1_IRQHandler(void){
 	stopTPMCounter(TPM1);
-	setHighPin(PIN02_PUL, GPIOB);
+	setHighPin(TILT_PUL, GPIOB);
 
 	return;
 }
