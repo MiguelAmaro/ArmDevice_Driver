@@ -351,7 +351,7 @@ N
 L 2 "src\motor.c" 2
 N
 N#include "MKL25Z4.h" // Device header
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -552,12 +552,12 @@ N#define __NVIC_PRIO_BITS               2         /**< Number of priority bits i
 N#define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
 N
 N#include "core_cm0plus.h"              /* Core Peripheral Access Layer */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h" 1
 N/**************************************************************************//**
 N * @file     core_cm0plus.h
 N * @brief    CMSIS Cortex-M0+ Core Peripheral Access Layer Header File
-N * @version  V5.0.7
-N * @date     13. March 2019
+N * @version  V5.0.9
+N * @date     21. August 2019
 N ******************************************************************************/
 N/*
 N * Copyright (c) 2009-2019 Arm Limited. All rights reserved.
@@ -618,12 +618,12 @@ N  @{
 N */
 N
 N#include "cmsis_version.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_version.h
 N * @brief    CMSIS Core(M) Version definitions
-N * @version  V5.0.3
-N * @date     24. June 2019
+N * @version  V5.0.4
+N * @date     23. July 2019
 N ******************************************************************************/
 N/*
 N * Copyright (c) 2009-2019 ARM Limited. All rights reserved.
@@ -656,12 +656,12 @@ N#define __CMSIS_VERSION_H
 N
 N/*  CMSIS Version definitions */
 N#define __CM_CMSIS_VERSION_MAIN  ( 5U)                                      /*!< [31:16] CMSIS Core(M) main version */
-N#define __CM_CMSIS_VERSION_SUB   ( 3U)                                      /*!< [15:0]  CMSIS Core(M) sub version */
+N#define __CM_CMSIS_VERSION_SUB   ( 4U)                                      /*!< [15:0]  CMSIS Core(M) sub version */
 N#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) | \
 N                                   __CM_CMSIS_VERSION_SUB           )       /*!< CMSIS Core(M) version number */
 X#define __CM_CMSIS_VERSION       ((__CM_CMSIS_VERSION_MAIN << 16U) |                                    __CM_CMSIS_VERSION_SUB           )        
 N#endif
-L 64 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 64 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N 
 N/*  CMSIS CM0+ definitions */
 N#define __CM0PLUS_CMSIS_VERSION_MAIN (__CM_CMSIS_VERSION_MAIN)                  /*!< \deprecated [31:16] CMSIS HAL main version */
@@ -717,7 +717,7 @@ S
 N#endif
 N
 N#include "cmsis_compiler.h"               /* CMSIS compiler specific defines */
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_compiler.h
 N * @brief    CMSIS compiler generic header file
@@ -753,15 +753,15 @@ N */
 N#if   defined ( __CC_ARM )
 X#if   1L
 N  #include "cmsis_armcc.h"
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h" 1
 N/**************************************************************************//**
 N * @file     cmsis_armcc.h
 N * @brief    CMSIS compiler ARMCC (Arm Compiler 5) header file
-N * @version  V5.1.0
-N * @date     08. May 2019
+N * @version  V5.2.1
+N * @date     26. March 2020
 N ******************************************************************************/
 N/*
-N * Copyright (c) 2009-2019 Arm Limited. All rights reserved.
+N * Copyright (c) 2009-2020 Arm Limited. All rights reserved.
 N *
 N * SPDX-License-Identifier: Apache-2.0
 N *
@@ -806,6 +806,7 @@ N#endif
 N
 N  /* __ARM_ARCH_8M_BASE__  not applicable */
 N  /* __ARM_ARCH_8M_MAIN__  not applicable */
+N  /* __ARM_ARCH_8_1M_MAIN__  not applicable */
 N
 N/* CMSIS compiler control DSP macros */
 N#if ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
@@ -888,7 +889,7 @@ N#define __VECTOR_TABLE            __Vectors
 N#endif
 N
 N#ifndef __VECTOR_TABLE_ATTRIBUTE
-N#define __VECTOR_TABLE_ATTRIBUTE  __attribute((used, section("RESET")))
+N#define __VECTOR_TABLE_ATTRIBUTE  __attribute__((used, section("RESET")))
 N#endif
 N
 N/* ###########################  Core Function Access  ########################### */
@@ -1233,36 +1234,21 @@ N  \details Instruction Synchronization Barrier flushes the pipeline in the proc
 N           so that all instructions following the ISB are fetched from cache or memory,
 N           after the instruction has been completed.
 N */
-N#define __ISB() do {\
-N                   __schedule_barrier();\
-N                   __isb(0xF);\
-N                   __schedule_barrier();\
-N                } while (0U)
-X#define __ISB() do {                   __schedule_barrier();                   __isb(0xF);                   __schedule_barrier();                } while (0U)
+N#define __ISB()                           __isb(0xF)
 N
 N/**
 N  \brief   Data Synchronization Barrier
 N  \details Acts as a special kind of Data Memory Barrier.
 N           It completes when all explicit memory accesses before this instruction complete.
 N */
-N#define __DSB() do {\
-N                   __schedule_barrier();\
-N                   __dsb(0xF);\
-N                   __schedule_barrier();\
-N                } while (0U)
-X#define __DSB() do {                   __schedule_barrier();                   __dsb(0xF);                   __schedule_barrier();                } while (0U)
+N#define __DSB()                           __dsb(0xF)
 N
 N/**
 N  \brief   Data Memory Barrier
 N  \details Ensures the apparent order of the explicit memory operations before
 N           and after the instruction, without ensuring their completion.
 N */
-N#define __DMB() do {\
-N                   __schedule_barrier();\
-N                   __dmb(0xF);\
-N                   __schedule_barrier();\
-N                } while (0U)
-X#define __DMB() do {                   __schedule_barrier();                   __dmb(0xF);                   __schedule_barrier();                } while (0U)
+N#define __DMB()                           __dmb(0xF)
 N
 N                  
 N/**
@@ -1692,12 +1678,14 @@ S#define __SMMLA(ARG1,ARG2,ARG3)          ( (int32_t)((((int64_t)(ARG1) * (ARG2)
 S                                                      ((int64_t)(ARG3) << 32U)     ) >> 32U))
 X#define __SMMLA(ARG1,ARG2,ARG3)          ( (int32_t)((((int64_t)(ARG1) * (ARG2)) +                                                       ((int64_t)(ARG3) << 32U)     ) >> 32U))
 S
+S#define __SXTB16_RORn(ARG1, ARG2)        __SXTB16(__ROR(ARG1, ARG2))
+S
 N#endif /* ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
 N/*@} end of group CMSIS_SIMD_intrinsics */
 N
 N
 N#endif /* __CMSIS_ARMCC_H */
-L 35 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h" 2
+L 35 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h" 2
 N
 N
 N/*
@@ -1947,7 +1935,7 @@ N
 N
 N#endif /* __CMSIS_COMPILER_H */
 N
-L 116 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h" 2
+L 116 "C:\Users\mAmaro\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h" 2
 N
 N
 N#ifdef __cplusplus
@@ -2647,9 +2635,9 @@ N  {
 N    NVIC->ICER[0U] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
 X    ((NVIC_Type *) ((0xE000E000UL) + 0x0100UL) )->ICER[0U] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
 N    __DSB();
-X    do { __schedule_barrier(); __dsb(0xF); __schedule_barrier(); } while (0U);
+X    __dsb(0xF);
 N    __ISB();
-X    do { __schedule_barrier(); __isb(0xF); __schedule_barrier(); } while (0U);
+X    __isb(0xF);
 N  }
 N}
 N
@@ -2839,13 +2827,14 @@ Xstatic __inline void __NVIC_SetVector(IRQn_Type IRQn, uint32_t vector)
 N{
 N#if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
 X#if 1L && (1 == 1U)
-N  uint32_t vectors = SCB->VTOR;
-X  uint32_t vectors = ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->VTOR;
+N  uint32_t *vectors = (uint32_t *)SCB->VTOR;
+X  uint32_t *vectors = (uint32_t *)((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->VTOR;
+N  vectors[(int32_t)IRQn + NVIC_USER_IRQ_OFFSET] = vector;
+X  vectors[(int32_t)IRQn + 16] = vector;
 N#else
-S  uint32_t vectors = 0x0U;
+S  uint32_t *vectors = (uint32_t *)(NVIC_USER_IRQ_OFFSET << 2);      /* point to 1st user interrupt */
+S  *(vectors + (int32_t)IRQn) = vector;                              /* use pointer arithmetic to access vector */
 N#endif
-N  (* (int *) (vectors + ((int32_t)IRQn + NVIC_USER_IRQ_OFFSET) * 4)) = vector;
-X  (* (int *) (vectors + ((int32_t)IRQn + 16) * 4)) = vector;
 N  /* ARM Application Note 321 states that the M0+ does not require the architectural barrier */
 N}
 N
@@ -2863,13 +2852,14 @@ Xstatic __inline uint32_t __NVIC_GetVector(IRQn_Type IRQn)
 N{
 N#if defined (__VTOR_PRESENT) && (__VTOR_PRESENT == 1U)
 X#if 1L && (1 == 1U)
-N  uint32_t vectors = SCB->VTOR;
-X  uint32_t vectors = ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->VTOR;
+N  uint32_t *vectors = (uint32_t *)SCB->VTOR;
+X  uint32_t *vectors = (uint32_t *)((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->VTOR;
+N  return vectors[(int32_t)IRQn + NVIC_USER_IRQ_OFFSET];
+X  return vectors[(int32_t)IRQn + 16];
 N#else
-S  uint32_t vectors = 0x0U;
+S  uint32_t *vectors = (uint32_t *)(NVIC_USER_IRQ_OFFSET << 2);      /* point to 1st user interrupt */
+S  return *(vectors + (int32_t)IRQn);                                /* use pointer arithmetic to access vector */
 N#endif
-N  return (uint32_t)(* (int *) (vectors + ((int32_t)IRQn + NVIC_USER_IRQ_OFFSET) * 4));
-X  return (uint32_t)(* (int *) (vectors + ((int32_t)IRQn + 16) * 4));
 N}
 N
 N
@@ -2881,14 +2871,14 @@ N__NO_RETURN __STATIC_INLINE void __NVIC_SystemReset(void)
 X__declspec(noreturn) static __inline void __NVIC_SystemReset(void)
 N{
 N  __DSB();                                                          /* Ensure all outstanding memory accesses included
-X  do { __schedule_barrier(); __dsb(0xF); __schedule_barrier(); } while (0U);                                                          
+X  __dsb(0xF);                                                          
 N                                                                       buffered write are completed before reset */
 N  SCB->AIRCR  = ((0x5FAUL << SCB_AIRCR_VECTKEY_Pos) |
 X  ((SCB_Type *) ((0xE000E000UL) + 0x0D00UL) )->AIRCR  = ((0x5FAUL << 16U) |
 N                 SCB_AIRCR_SYSRESETREQ_Msk);
 X                 (1UL << 2U));
 N  __DSB();                                                          /* Ensure completion of memory access */
-X  do { __schedule_barrier(); __dsb(0xF); __schedule_barrier(); } while (0U);                                                           
+X  __dsb(0xF);                                                           
 N
 N  for(;;)                                                           /* wait until reset */
 N  {
@@ -2995,7 +2985,7 @@ N
 N#endif /* __CORE_CM0PLUS_H_DEPENDANT */
 N
 N#endif /* __CMSIS_GENERIC */
-L 199 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 199 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N#include "system_MKL25Z4.h"            /* Device specific configuration file */
 L 1 ".\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h" 1
 N/*
@@ -3339,7 +3329,7 @@ S}
 N#endif
 N
 N#endif  /* #if !defined(SYSTEM_MKL25Z4_H_) */
-L 200 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
+L 200 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 2
 N
 N/*!
 N * @}
@@ -11626,7 +11616,7 @@ L 1 ".\inc\port.h" 1
 N#ifndef _PORT_H_
 N#define _PORT_H_
 N#include "MKL25Z4.h" // Device header
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
@@ -19809,7 +19799,7 @@ N#ifndef _TIMER_H_
 N#define _TIMER_H_
 N
 N#include "MKL25Z4.h" // Device header
-L 1 "C:\Users\Miguel Amaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
+L 1 "C:\Users\mAmaro\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h" 1
 N/*
 N** ###################################################################
 N**     Processors:          MKL25Z128FM4
