@@ -1,4 +1,4 @@
-# Baboom Driver
+#Driver
 ## About
 Firmware for the pan tilt device of the baboom project using arm processors. The two boards considered for this project are the KL25Z because of the large amount of tutorials and support available and the K82F because of it's onboard magnetometer and flex IO and similarity with the KL25Z. 
 
